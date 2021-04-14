@@ -49,7 +49,7 @@ ler periodicamente o registrador.
 
 uint8_t varLeituraSerial = 0;
 uint8_t varEscritaSerial = 0xAA;
-uint8_t auxRaiva = 0;
+
 
 uint8_t SetBit(uint8_t valor, uint8_t posicao)
 {
@@ -78,12 +78,16 @@ void shiftIn()
 	
 	if(PINB & (1<<PINB0)) {
 		varLeituraSerial = SetBit(varLeituraSerial, 0); // QUANDO FOR 1, IRÁ SETAR O VALOR NO REGISTRADOR
+	} 
+	
+	else{
+		if(varLeituraSerial & (1<<0))
+		varLeituraSerial = ClearBit(varLeituraSerial,0); // QUANDO FOR 1, IRÁ SETAR O VALOR NO REGISTRADOR
 	}
-	
-	
+		
 	for (uint8_t iter = 1; iter<8 ; iter++){
 		PORTB |= (1 << clock_shftin); // CLK vai pra 1
-        auxRaiva = (PINB & (1<<PINB0));
+ 
        if(PINB & (1 << PINB0)){
 	       if(varLeituraSerial & ~(1<<iter)) 
 				varLeituraSerial = SetBit(varLeituraSerial,iter); // QUANDO FOR 0, COLOCA A SAÍDA PRA 1
