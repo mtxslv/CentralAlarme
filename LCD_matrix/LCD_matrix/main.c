@@ -5,13 +5,16 @@
  *  Author: erika
  */ 
 
-#define F_CPU	16000000
+#define F_CPU 8000000UL
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
 #define pino_key PIND
 
+
+
 /*############ VARIAVEIS #############*/
+typedef int bool;
 
 char auxChar[15];
 long int x = 0;
@@ -19,7 +22,13 @@ int cont_1 = 0;
 
 int valor_pinod;
 
-int cont_r = 0;
+// SENHA //
+char mestre[] = "1234";
+char senha1[] = "2222";
+char senha_inserida[5];
+
+int count_senha = 0;
+bool flag_senha_correta = 0;
 
 /*############ FUNÇÕES #############*/
 // DELAYS //
@@ -33,12 +42,25 @@ void inicializa_display();
 void send_word_lcd(uint8_t data);
 void set_DDRAM_ADDR(uint8_t pos);
 void envia_frase(char *frase,uint8_t pos);
+
+void clear_Display();
+
 // BOTOES //
 void init_int1();
-void get_button();
+
+// ROTINA DE SENHA //
+void insert_senha(int n, const char *digito);
+void verify_senha();
+void msg_inserir_senha();
+
+// DESATIVADO //
+void msg_desativado();
+
+// PROGRAMA //
+void msg_programacao();
 
 
-/* ########## PINOS ###########*/
+/* ########## PINOS e ESTADOS ###########*/
 
 enum posicao_lcd{
 	l1C1,
@@ -84,29 +106,89 @@ enum display_pinos{
 	EN
 };
 
+enum states{
+	recuperacao,
+	desativado,
+	senhaMcorreta,
+	senhaAcorreta,
+	senhaAnova,
+	HabSensor,
+	AssSensorZona,
+	HabZona,  //qnd tem q salvar algo virá um estado
+	ativado,
+	panico,
+	programacao,
+	AjusteTAtivacao,
+	AjusteTout,
+	AjusteTSirene,
+	
+	// novos estados //
+	inserir_senha,
+	verificar_senha,
+};
+
+// ESTADO INICIAL //
+enum states state=recuperacao;
+
 int main(void)
 {
+	// AJUSTE DOS PINOS DO ATMEGA //
 	// display pinos //
 	DDRB = 0X3F;
 	// matrix pinos //
 	DDRD = 0x00;
 	PORTD = 0xF0;
 	
+	// INIALIZAÇÕES DO SISTEMA //
 	init_int1();
-	
 	inicializa_display();
-	char frase_1[] = "    BOM DIA";
-	envia_frase(frase_1,l1C1);
-	char frase_2[] = "";
-	envia_frase(frase_2,l2C1);
 	
 	sei();
 	
     while(1)
-    {
-        //get_button(); 
+    {	
+		// SWITCH CASE PARA A SELEÇÃO DO MODO //
+        switch(state){
+			// ROTINAS PRINCIPAIS  //
+			case recuperacao:
+			// vai direto pro desativado //
+			state = desativado;
+			break;
+			case desativado:
+			msg_desativado();
+			break;
+			case ativado:
+			break;
+			case programacao:
+			msg_programacao();
+			// inserir senha //
+			// ver se a senha está correta //
+			// init timer do timeout //
+			// fazer a configurações restantes //
+			break;
+			case panico:
+			break;
+			
+			// ROTINAS SECUNDARIAS //
+			
+			case inserir_senha:
+			// Inserndo a senha //
+			//msg_inserir_senha();
+			if(count_senha >= 4){
+				state = verificar_senha;
+				count_senha = 0;
+			}
+			break;
+			
+			case verificar_senha:
+			// verificando a senha //
+			verify_senha();
+			break;
+		}
     }
 }
+
+// INTERRUPÇÃO EXTERNA //
 
 void init_int1(){
 	
@@ -116,38 +198,75 @@ void init_int1(){
 }
 
 ISR(INT1_vect){
-	//send_word_lcd(0b00110001);	
-	
-	//valor_pinod = (PIND7) | (PIND6) | (PIND5) | (PIND4) ;
+	// Valor do pino de entrada //
 	valor_pinod = (PIND & 0xF0);
+	
 	
 	if(valor_pinod == 0xF0){
 		// 1
 		send_word_lcd(0b00110001);
+		
+		// Inserir a senha //
+		if(state == inserir_senha){
+			insert_senha(count_senha, "1");
+			count_senha++;
+		}
 	}
 	else if(valor_pinod == 0b01110000){
 		// 2
 		send_word_lcd(0b00110010);
+		
+		// Inserir a senha //
+		if(state == inserir_senha){
+			insert_senha(count_senha, "2");
+			count_senha++;
+		}
 	}
 	else if(valor_pinod == 0b10110000){
 		// 3
 		send_word_lcd(0b00110011);
+		
+		// Inserir a senha //
+		if(state == inserir_senha){
+			insert_senha(count_senha, "3");
+			count_senha++;
+		}
 	}
 	else if(valor_pinod == 0b00110000){
 		// P
 		send_word_lcd(0b01010000);
+		state = inserir_senha;
+		msg_inserir_senha();
 	}
 	else if(valor_pinod == 0b11010000){
 		// 4
 		send_word_lcd(0b00110100);
+		
+		// Inserir a senha //
+		if(state == inserir_senha){
+			insert_senha(count_senha, "4");
+			count_senha++;
+		}
 	}
 	else if(valor_pinod == 0b01010000){
 		// 5
 		send_word_lcd(0b00110101);
+		
+		// Inserir a senha //
+		if(state == inserir_senha){
+			insert_senha(count_senha, "5");
+			count_senha++;
+		}
 	}
 	else if(valor_pinod == 0b10010000){
 		// 6
 		send_word_lcd(0b00110110);
+		
+		// Inserir a senha //
+		if(state == inserir_senha){
+			insert_senha(count_senha, "6");
+			count_senha++;
+		}
 	}
 	else if(valor_pinod == 0b00010000){
 		// A
@@ -156,14 +275,32 @@ ISR(INT1_vect){
 	else if(valor_pinod == 0b11100000){
 		// 7
 		send_word_lcd(0b00110111);
+		
+		// Inserir a senha //
+		if(state == inserir_senha){
+			insert_senha(count_senha, "7");
+			count_senha++;
+		}
 	}
 	else if(valor_pinod == 0b01100000){
 		// 8
 		send_word_lcd(0b00111000);
+		
+		// Inserir a senha //
+		if(state == inserir_senha){
+			insert_senha(count_senha, "8");
+			count_senha++;
+		}
 	}
 	else if(valor_pinod == 0b10100000){
 		// 9
 		send_word_lcd(0b00111001);
+		
+		// Inserir a senha //
+		if(state == inserir_senha){
+			insert_senha(count_senha, "9");
+			count_senha++;
+		}
 	}
 	else if(valor_pinod == 0b00100000){
 		// D
@@ -171,12 +308,17 @@ ISR(INT1_vect){
 	}
 	else if(valor_pinod == 0b11000000){
 		// R
-		cont_r++;
 		send_word_lcd(0b01010010);
 	}
 	else if(valor_pinod == 0b01000000){
 		// 0
 		send_word_lcd(0b00110000);
+		
+		// Inserir a senha //
+		if(state == inserir_senha){
+			insert_senha(count_senha, "0");
+			count_senha++;
+		}
 	}
 	else if(valor_pinod == 0b10000000){
 		// S
@@ -187,6 +329,9 @@ ISR(INT1_vect){
 		send_word_lcd(0b01000101);
 	}
 }
+
+
+// DELAY //
 
 void delay_ms(long int n){
 	
@@ -209,6 +354,8 @@ void delay_ns(long int n){
 		x++;
 	}
 }
+
+// DISPLAY //
 
 void send_instruction_lcd(uint8_t data){
 	PORTB &= 0xC0;
@@ -309,5 +456,75 @@ void passarValor(const char *data){
 	auxChar[cont] = '\0';
 }
 
+// MSGS //
 
+void msg_inserir_senha(){
+	
+	clear_Display();
+	
+	char frase_1[] = "Insira a senha  ";
+	envia_frase(frase_1,l1C1);
+	//char frase_2[] = "                ";
+	//envia_frase(frase_2,l2C1);
+	
+}
 
+void msg_desativado(){
+	
+	char frase_1[] = "Desativado      ";
+	envia_frase(frase_1,l1C1);
+	char frase_2[] = "";
+	envia_frase(frase_2,l2C1);
+}
+
+void msg_programacao(){
+	
+	char frase_1[] = "Programacao     ";
+	envia_frase(frase_1,l1C1);
+	char frase_2[] = "";
+	envia_frase(frase_2,l2C1);
+
+}
+
+// INSERIR SENHA //
+
+void insert_senha(int n,const char *digito){
+	
+	senha_inserida[n] = digito[0];
+	
+}
+
+void verify_senha(){
+	
+	int cont_a = 0;
+	int cont_b = 0;
+	
+	while(mestre[cont_a] != '\0'){
+		
+		if(mestre[cont_a] == senha_inserida[cont_a]){
+			cont_b++;
+		}
+		cont_a++;
+	}
+	
+	if(cont_b == 4){ 
+		
+		state = programacao;
+		clear_Display();
+		
+	}else{
+		
+		state = desativado;
+		clear_Display();
+	}
+	
+	delay_ms(20);
+	
+}
+
+void clear_Display(){
+	
+	send_instruction_lcd(0x01);
+	delay_ms(5);
+	
+}
