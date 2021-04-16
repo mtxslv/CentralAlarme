@@ -75,27 +75,19 @@ void shiftIn()
 	PORTB |= (1 << clock_shftin); // CLK  vai pra 1
 	PORTB &= ~(1 << clock_shftin); // CLK  vai pra 0
 	PORTB &= ~(1 << P_Shftin); // P/S' vai pra 0
-	
-	if(PINB & (1<<PINB0)) {
-		varLeituraSerial = SetBit(varLeituraSerial, 0); // QUANDO FOR 1, IRÁ SETAR O VALOR NO REGISTRADOR
-	} 
-	
-	else{
-		if(varLeituraSerial & (1<<0))
-		varLeituraSerial = ClearBit(varLeituraSerial,0); // QUANDO FOR 1, IRÁ SETAR O VALOR NO REGISTRADOR
-	}
 		
-	for (uint8_t iter = 1; iter<8 ; iter++){
-		PORTB |= (1 << clock_shftin); // CLK vai pra 1
+	for (uint8_t iter = 0; iter<8 ; iter++){
+
  
        if(PINB & (1 << PINB0)){
-	       if(varLeituraSerial & ~(1<<iter)) 
+	       if(varLeituraSerial | ~(1<<iter)) // 0b00000000 | 0b11111111 = 0b11111111
 				varLeituraSerial = SetBit(varLeituraSerial,iter); // QUANDO FOR 0, COLOCA A SAÍDA PRA 1
        }
        else{
 	       if(varLeituraSerial & (1<<iter)) 
 				varLeituraSerial = ClearBit(varLeituraSerial,iter); // QUANDO FOR 1, IRÁ SETAR O VALOR NO REGISTRADOR
        }
+	   	PORTB |= (1 << clock_shftin); // CLK vai pra 1
 		PORTB &= ~(1 << clock_shftin); // CLK vai pra 0
 	}
 }
