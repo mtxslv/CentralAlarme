@@ -1,0 +1,365 @@
+
+GccApplication1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000002c  00800100  0000022e  000002a2  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000022e  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000002ce  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000300  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000058  00000000  00000000  00000340  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   0000091d  00000000  00000000  00000398  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 0000072e  00000000  00000000  00000cb5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000367  00000000  00000000  000013e3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000000cc  00000000  00000000  0000174c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000427  00000000  00000000  00001818  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000207  00000000  00000000  00001c3f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000048  00000000  00000000  00001e46  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   8:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+   c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  10:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  14:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  18:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  1c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  20:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  24:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  28:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  2c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  30:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  34:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  38:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  3c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  40:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  44:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  48:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  4c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  50:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  54:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  58:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  5c:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  60:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+  64:	0c 94 49 00 	jmp	0x92	; 0x92 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ee e2       	ldi	r30, 0x2E	; 46
+  7c:	f2 e0       	ldi	r31, 0x02	; 2
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	ac 32       	cpi	r26, 0x2C	; 44
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+  8a:	0e 94 cc 00 	call	0x198	; 0x198 <main>
+  8e:	0c 94 15 01 	jmp	0x22a	; 0x22a <_exit>
+
+00000092 <__bad_interrupt>:
+  92:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000096 <IniciarUART>:
+	return (UCSR0A & (1<<RXC0)); // retorna 1 qnd pode ser enviado
+}
+
+uint8_t LerRXUART (){
+	return UDR0;
+}
+  96:	cf 92       	push	r12
+  98:	df 92       	push	r13
+  9a:	ef 92       	push	r14
+  9c:	ff 92       	push	r15
+  9e:	6b 01       	movw	r12, r22
+  a0:	7c 01       	movw	r14, r24
+  a2:	ca 01       	movw	r24, r20
+  a4:	b9 01       	movw	r22, r18
+  a6:	68 94       	set
+  a8:	13 f8       	bld	r1, 3
+  aa:	96 95       	lsr	r25
+  ac:	87 95       	ror	r24
+  ae:	77 95       	ror	r23
+  b0:	67 95       	ror	r22
+  b2:	16 94       	lsr	r1
+  b4:	d1 f7       	brne	.-12     	; 0xaa <IniciarUART+0x14>
+  b6:	a7 01       	movw	r20, r14
+  b8:	96 01       	movw	r18, r12
+  ba:	0e 94 f3 00 	call	0x1e6	; 0x1e6 <__udivmodsi4>
+  be:	21 50       	subi	r18, 0x01	; 1
+  c0:	31 09       	sbc	r19, r1
+  c2:	30 93 c5 00 	sts	0x00C5, r19	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
+  c6:	20 93 c4 00 	sts	0x00C4, r18	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
+  ca:	10 92 c0 00 	sts	0x00C0, r1	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+  ce:	88 e1       	ldi	r24, 0x18	; 24
+  d0:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
+  d4:	86 e0       	ldi	r24, 0x06	; 6
+  d6:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
+  da:	ff 90       	pop	r15
+  dc:	ef 90       	pop	r14
+  de:	df 90       	pop	r13
+  e0:	cf 90       	pop	r12
+  e2:	08 95       	ret
+
+000000e4 <ProntoTXUART>:
+  e4:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+  e8:	80 72       	andi	r24, 0x20	; 32
+  ea:	08 95       	ret
+
+000000ec <EnviarTXUART>:
+
+void EnviarTXUART (uint8_t dado){
+	UDR0 = dado;
+  ec:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+  f0:	08 95       	ret
+
+000000f2 <EnviarStringUART>:
+}
+
+
+void EnviarStringUART (char *c){
+  f2:	cf 93       	push	r28
+  f4:	df 93       	push	r29
+  f6:	ec 01       	movw	r28, r24
+	for( ; *c != 0; c++){ // a string tem como ultimo valor do vetor =  0
+  f8:	07 c0       	rjmp	.+14     	; 0x108 <EnviarStringUART+0x16>
+		while (!ProntoTXUART());
+  fa:	0e 94 72 00 	call	0xe4	; 0xe4 <ProntoTXUART>
+  fe:	88 23       	and	r24, r24
+ 100:	e1 f3       	breq	.-8      	; 0xfa <EnviarStringUART+0x8>
+		EnviarTXUART(*c);
+ 102:	89 91       	ld	r24, Y+
+ 104:	0e 94 76 00 	call	0xec	; 0xec <EnviarTXUART>
+	UDR0 = dado;
+}
+
+
+void EnviarStringUART (char *c){
+	for( ; *c != 0; c++){ // a string tem como ultimo valor do vetor =  0
+ 108:	88 81       	ld	r24, Y
+ 10a:	81 11       	cpse	r24, r1
+ 10c:	f6 cf       	rjmp	.-20     	; 0xfa <EnviarStringUART+0x8>
+		while (!ProntoTXUART());
+		EnviarTXUART(*c);
+	}
+	
+}
+ 10e:	df 91       	pop	r29
+ 110:	cf 91       	pop	r28
+ 112:	08 95       	ret
+
+00000114 <EnviarDec1Byte>:
+
+void EnviarDec1Byte(uint8_t valor){
+ 114:	1f 93       	push	r17
+ 116:	cf 93       	push	r28
+ 118:	df 93       	push	r29
+ 11a:	00 d0       	rcall	.+0      	; 0x11c <EnviarDec1Byte+0x8>
+ 11c:	1f 92       	push	r1
+ 11e:	cd b7       	in	r28, 0x3d	; 61
+ 120:	de b7       	in	r29, 0x3e	; 62
+  int8_t disp;
+  char digitos[3];
+  int8_t conta = 0;
+ 122:	10 e0       	ldi	r17, 0x00	; 0
+ 124:	01 c0       	rjmp	.+2      	; 0x128 <EnviarDec1Byte+0x14>
+  do //converte o valor armazenando os algarismos no vetor digitos
+  { disp = (valor%10) + 48;//armazena o resto da divisao por 10 e soma com 48
+    valor /= 10;
+    digitos[conta]=disp;
+    conta++;
+ 126:	19 2f       	mov	r17, r25
+void EnviarDec1Byte(uint8_t valor){
+  int8_t disp;
+  char digitos[3];
+  int8_t conta = 0;
+  do //converte o valor armazenando os algarismos no vetor digitos
+  { disp = (valor%10) + 48;//armazena o resto da divisao por 10 e soma com 48
+ 128:	9d ec       	ldi	r25, 0xCD	; 205
+ 12a:	89 9f       	mul	r24, r25
+ 12c:	91 2d       	mov	r25, r1
+ 12e:	11 24       	eor	r1, r1
+ 130:	96 95       	lsr	r25
+ 132:	96 95       	lsr	r25
+ 134:	96 95       	lsr	r25
+ 136:	39 2f       	mov	r19, r25
+ 138:	33 0f       	add	r19, r19
+ 13a:	23 2f       	mov	r18, r19
+ 13c:	22 0f       	add	r18, r18
+ 13e:	22 0f       	add	r18, r18
+ 140:	23 0f       	add	r18, r19
+ 142:	82 1b       	sub	r24, r18
+ 144:	20 e3       	ldi	r18, 0x30	; 48
+ 146:	28 0f       	add	r18, r24
+    valor /= 10;
+ 148:	89 2f       	mov	r24, r25
+    digitos[conta]=disp;
+ 14a:	e1 e0       	ldi	r30, 0x01	; 1
+ 14c:	f0 e0       	ldi	r31, 0x00	; 0
+ 14e:	ec 0f       	add	r30, r28
+ 150:	fd 1f       	adc	r31, r29
+ 152:	e1 0f       	add	r30, r17
+ 154:	f1 1d       	adc	r31, r1
+ 156:	17 fd       	sbrc	r17, 7
+ 158:	fa 95       	dec	r31
+ 15a:	20 83       	st	Z, r18
+    conta++;
+ 15c:	91 e0       	ldi	r25, 0x01	; 1
+ 15e:	91 0f       	add	r25, r17
+  } while (valor!=0);
+ 160:	81 11       	cpse	r24, r1
+ 162:	e1 cf       	rjmp	.-62     	; 0x126 <EnviarDec1Byte+0x12>
+ 164:	10 c0       	rjmp	.+32     	; 0x186 <EnviarDec1Byte+0x72>
+  for (disp=conta-1; disp>=0; disp-- )//envia valores do vetor digitos
+  { while (!ProntoTXUART());  //aguarda último dado ser enviado
+ 166:	0e 94 72 00 	call	0xe4	; 0xe4 <ProntoTXUART>
+ 16a:	88 23       	and	r24, r24
+ 16c:	e1 f3       	breq	.-8      	; 0x166 <EnviarDec1Byte+0x52>
+    EnviarTXUART(digitos[disp]);//envia algarismo
+ 16e:	e1 e0       	ldi	r30, 0x01	; 1
+ 170:	f0 e0       	ldi	r31, 0x00	; 0
+ 172:	ec 0f       	add	r30, r28
+ 174:	fd 1f       	adc	r31, r29
+ 176:	e1 0f       	add	r30, r17
+ 178:	f1 1d       	adc	r31, r1
+ 17a:	17 fd       	sbrc	r17, 7
+ 17c:	fa 95       	dec	r31
+ 17e:	80 81       	ld	r24, Z
+ 180:	0e 94 76 00 	call	0xec	; 0xec <EnviarTXUART>
+  { disp = (valor%10) + 48;//armazena o resto da divisao por 10 e soma com 48
+    valor /= 10;
+    digitos[conta]=disp;
+    conta++;
+  } while (valor!=0);
+  for (disp=conta-1; disp>=0; disp-- )//envia valores do vetor digitos
+ 184:	11 50       	subi	r17, 0x01	; 1
+ 186:	11 23       	and	r17, r17
+ 188:	74 f7       	brge	.-36     	; 0x166 <EnviarDec1Byte+0x52>
+  { while (!ProntoTXUART());  //aguarda último dado ser enviado
+    EnviarTXUART(digitos[disp]);//envia algarismo
+  }
+}
+ 18a:	0f 90       	pop	r0
+ 18c:	0f 90       	pop	r0
+ 18e:	0f 90       	pop	r0
+ 190:	df 91       	pop	r29
+ 192:	cf 91       	pop	r28
+ 194:	1f 91       	pop	r17
+ 196:	08 95       	ret
+
+00000198 <main>:
+	dia = 5;
+	hora = 10;
+
+    while (1) 
+    {
+		IniciarUART(TAXA, FREQCPU);
+ 198:	20 e0       	ldi	r18, 0x00	; 0
+ 19a:	32 e1       	ldi	r19, 0x12	; 18
+ 19c:	4a e7       	ldi	r20, 0x7A	; 122
+ 19e:	50 e0       	ldi	r21, 0x00	; 0
+ 1a0:	60 e8       	ldi	r22, 0x80	; 128
+ 1a2:	75 e2       	ldi	r23, 0x25	; 37
+ 1a4:	80 e0       	ldi	r24, 0x00	; 0
+ 1a6:	90 e0       	ldi	r25, 0x00	; 0
+ 1a8:	0e 94 4b 00 	call	0x96	; 0x96 <IniciarUART>
+		EnviarStringUART("A central foi ativada no dia  ");
+ 1ac:	80 e0       	ldi	r24, 0x00	; 0
+ 1ae:	91 e0       	ldi	r25, 0x01	; 1
+ 1b0:	0e 94 79 00 	call	0xf2	; 0xf2 <EnviarStringUART>
+		while(!ProntoTXUART()); //aguarda a string ser enviada
+ 1b4:	0e 94 72 00 	call	0xe4	; 0xe4 <ProntoTXUART>
+ 1b8:	88 23       	and	r24, r24
+ 1ba:	e1 f3       	breq	.-8      	; 0x1b4 <main+0x1c>
+		EnviarDec1Byte(dia); 
+ 1bc:	85 e0       	ldi	r24, 0x05	; 5
+ 1be:	90 e0       	ldi	r25, 0x00	; 0
+ 1c0:	0e 94 8a 00 	call	0x114	; 0x114 <EnviarDec1Byte>
+		EnviarStringUART(" e hora  ");
+ 1c4:	8f e1       	ldi	r24, 0x1F	; 31
+ 1c6:	91 e0       	ldi	r25, 0x01	; 1
+ 1c8:	0e 94 79 00 	call	0xf2	; 0xf2 <EnviarStringUART>
+		while(!ProntoTXUART()); //aguarda a string ser enviada
+ 1cc:	0e 94 72 00 	call	0xe4	; 0xe4 <ProntoTXUART>
+ 1d0:	88 23       	and	r24, r24
+ 1d2:	e1 f3       	breq	.-8      	; 0x1cc <main+0x34>
+		EnviarDec1Byte(hora);
+ 1d4:	8a e0       	ldi	r24, 0x0A	; 10
+ 1d6:	90 e0       	ldi	r25, 0x00	; 0
+ 1d8:	0e 94 8a 00 	call	0x114	; 0x114 <EnviarDec1Byte>
+		EnviarStringUART("\r\n");
+ 1dc:	89 e2       	ldi	r24, 0x29	; 41
+ 1de:	91 e0       	ldi	r25, 0x01	; 1
+ 1e0:	0e 94 79 00 	call	0xf2	; 0xf2 <EnviarStringUART>
+    }
+ 1e4:	d9 cf       	rjmp	.-78     	; 0x198 <main>
+
+000001e6 <__udivmodsi4>:
+ 1e6:	a1 e2       	ldi	r26, 0x21	; 33
+ 1e8:	1a 2e       	mov	r1, r26
+ 1ea:	aa 1b       	sub	r26, r26
+ 1ec:	bb 1b       	sub	r27, r27
+ 1ee:	fd 01       	movw	r30, r26
+ 1f0:	0d c0       	rjmp	.+26     	; 0x20c <__udivmodsi4_ep>
+
+000001f2 <__udivmodsi4_loop>:
+ 1f2:	aa 1f       	adc	r26, r26
+ 1f4:	bb 1f       	adc	r27, r27
+ 1f6:	ee 1f       	adc	r30, r30
+ 1f8:	ff 1f       	adc	r31, r31
+ 1fa:	a2 17       	cp	r26, r18
+ 1fc:	b3 07       	cpc	r27, r19
+ 1fe:	e4 07       	cpc	r30, r20
+ 200:	f5 07       	cpc	r31, r21
+ 202:	20 f0       	brcs	.+8      	; 0x20c <__udivmodsi4_ep>
+ 204:	a2 1b       	sub	r26, r18
+ 206:	b3 0b       	sbc	r27, r19
+ 208:	e4 0b       	sbc	r30, r20
+ 20a:	f5 0b       	sbc	r31, r21
+
+0000020c <__udivmodsi4_ep>:
+ 20c:	66 1f       	adc	r22, r22
+ 20e:	77 1f       	adc	r23, r23
+ 210:	88 1f       	adc	r24, r24
+ 212:	99 1f       	adc	r25, r25
+ 214:	1a 94       	dec	r1
+ 216:	69 f7       	brne	.-38     	; 0x1f2 <__udivmodsi4_loop>
+ 218:	60 95       	com	r22
+ 21a:	70 95       	com	r23
+ 21c:	80 95       	com	r24
+ 21e:	90 95       	com	r25
+ 220:	9b 01       	movw	r18, r22
+ 222:	ac 01       	movw	r20, r24
+ 224:	bd 01       	movw	r22, r26
+ 226:	cf 01       	movw	r24, r30
+ 228:	08 95       	ret
+
+0000022a <_exit>:
+ 22a:	f8 94       	cli
+
+0000022c <__stop_program>:
+ 22c:	ff cf       	rjmp	.-2      	; 0x22c <__stop_program>
