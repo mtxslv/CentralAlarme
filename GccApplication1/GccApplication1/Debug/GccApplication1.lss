@@ -1,0 +1,231 @@
+
+GccApplication1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  00000198  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000144  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  00000198  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000001c8  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000050  00000000  00000000  00000208  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000007b3  00000000  00000000  00000258  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000006d4  00000000  00000000  00000a0b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000002d3  00000000  00000000  000010df  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000084  00000000  00000000  000013b4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000003b1  00000000  00000000  00001438  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000045  00000000  00000000  000017e9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000040  00000000  00000000  0000182e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+   8:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+   c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  10:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  14:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  18:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  1c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  20:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  24:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  28:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  2c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  30:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  34:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  38:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  3c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  40:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  44:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  48:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  4c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  50:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  54:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  58:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  5c:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  60:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+  64:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+  74:	0e 94 66 00 	call	0xcc	; 0xcc <main>
+  78:	0c 94 a0 00 	jmp	0x140	; 0x140 <_exit>
+
+0000007c <__bad_interrupt>:
+  7c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000080 <SPI_Master_Setup>:
+		}
+		i++;
+    }
+}
+void SPI_Master_Setup(){
+	DDRB |= (1<<PORTB5) | (1<<PORTB3) | (1<<PORTB2); // Configura SCK, MOSI e SS como saaídas, demais pinos como entradas.
+  80:	84 b1       	in	r24, 0x04	; 4
+  82:	8c 62       	ori	r24, 0x2C	; 44
+  84:	84 b9       	out	0x04, r24	; 4
+	SPCR |= (1<<SPE) | (1<<MSTR) | (1<<SPR0); // Habilita SPI mestre. 
+  86:	8c b5       	in	r24, 0x2c	; 44
+  88:	81 65       	ori	r24, 0x51	; 81
+  8a:	8c bd       	out	0x2c, r24	; 44
+	PORTB |= (1<<PORTB2); // Desativa o escravo.
+  8c:	85 b1       	in	r24, 0x05	; 5
+  8e:	84 60       	ori	r24, 0x04	; 4
+  90:	85 b9       	out	0x05, r24	; 5
+  92:	08 95       	ret
+
+00000094 <SPI_Master_Transmit>:
+}
+void SPI_Master_Transmit(uint8_t dado){
+	SPDR = dado;
+  94:	8e bd       	out	0x2e, r24	; 46
+  96:	08 95       	ret
+
+00000098 <SPI_Read>:
+}
+uint8_t SPI_Read(uint8_t code){
+	SPCR |= (1<<SPE)|(1<<MSTR)|(1<<SPR0)|(1<<CPHA);
+  98:	9c b5       	in	r25, 0x2c	; 44
+  9a:	95 65       	ori	r25, 0x55	; 85
+  9c:	9c bd       	out	0x2c, r25	; 44
+	PORTB &= ~(1 << (PINB2));
+  9e:	95 b1       	in	r25, 0x05	; 5
+  a0:	9b 7f       	andi	r25, 0xFB	; 251
+  a2:	95 b9       	out	0x05, r25	; 5
+	SPI_Master_Transmit(code);
+  a4:	0e 94 4a 00 	call	0x94	; 0x94 <SPI_Master_Transmit>
+	while(!(SPSR & (1<<SPIF)));
+  a8:	0d b4       	in	r0, 0x2d	; 45
+  aa:	07 fe       	sbrs	r0, 7
+  ac:	fd cf       	rjmp	.-6      	; 0xa8 <SPI_Read+0x10>
+	SPI_Master_Transmit(0xFF);
+  ae:	8f ef       	ldi	r24, 0xFF	; 255
+  b0:	0e 94 4a 00 	call	0x94	; 0x94 <SPI_Master_Transmit>
+	while(!(SPSR & (1<<SPIF)));
+  b4:	0d b4       	in	r0, 0x2d	; 45
+  b6:	07 fe       	sbrs	r0, 7
+  b8:	fd cf       	rjmp	.-6      	; 0xb4 <SPI_Read+0x1c>
+	PORTB |= (1<<PORTB2);
+  ba:	85 b1       	in	r24, 0x05	; 5
+  bc:	84 60       	ori	r24, 0x04	; 4
+  be:	85 b9       	out	0x05, r24	; 5
+	return SPDR;
+  c0:	8e b5       	in	r24, 0x2e	; 46
+}
+  c2:	08 95       	ret
+
+000000c4 <RTC_Read_Hours>:
+uint8_t RTC_Read_Hours(){
+	return SPI_Read(0x00);
+  c4:	80 e0       	ldi	r24, 0x00	; 0
+  c6:	0e 94 4c 00 	call	0x98	; 0x98 <SPI_Read>
+}
+  ca:	08 95       	ret
+
+000000cc <main>:
+uint8_t RTC_Read_Day(); // Função que faz a solicitação e leitura da data que vem do RTC.
+
+int main(void)
+{
+    /* Replace with your application code */
+	SPI_Master_Setup();
+  cc:	0e 94 40 00 	call	0x80	; 0x80 <SPI_Master_Setup>
+	DDRD = 0b11111111;
+  d0:	8f ef       	ldi	r24, 0xFF	; 255
+  d2:	8a b9       	out	0x0a, r24	; 10
+	int i = 0;
+  d4:	c0 e0       	ldi	r28, 0x00	; 0
+  d6:	d0 e0       	ldi	r29, 0x00	; 0
+    while (1) 
+    {
+		if(i%10 == 0){
+  d8:	ce 01       	movw	r24, r28
+  da:	6a e0       	ldi	r22, 0x0A	; 10
+  dc:	70 e0       	ldi	r23, 0x00	; 0
+  de:	0e 94 78 00 	call	0xf0	; 0xf0 <__divmodhi4>
+  e2:	89 2b       	or	r24, r25
+  e4:	19 f4       	brne	.+6      	; 0xec <main+0x20>
+			PORTD = RTC_Read_Hours();
+  e6:	0e 94 62 00 	call	0xc4	; 0xc4 <RTC_Read_Hours>
+  ea:	8b b9       	out	0x0b, r24	; 11
+		}
+		i++;
+  ec:	21 96       	adiw	r28, 0x01	; 1
+    }
+  ee:	f4 cf       	rjmp	.-24     	; 0xd8 <main+0xc>
+
+000000f0 <__divmodhi4>:
+  f0:	97 fb       	bst	r25, 7
+  f2:	07 2e       	mov	r0, r23
+  f4:	16 f4       	brtc	.+4      	; 0xfa <__divmodhi4+0xa>
+  f6:	00 94       	com	r0
+  f8:	07 d0       	rcall	.+14     	; 0x108 <__divmodhi4_neg1>
+  fa:	77 fd       	sbrc	r23, 7
+  fc:	09 d0       	rcall	.+18     	; 0x110 <__divmodhi4_neg2>
+  fe:	0e 94 8c 00 	call	0x118	; 0x118 <__udivmodhi4>
+ 102:	07 fc       	sbrc	r0, 7
+ 104:	05 d0       	rcall	.+10     	; 0x110 <__divmodhi4_neg2>
+ 106:	3e f4       	brtc	.+14     	; 0x116 <__divmodhi4_exit>
+
+00000108 <__divmodhi4_neg1>:
+ 108:	90 95       	com	r25
+ 10a:	81 95       	neg	r24
+ 10c:	9f 4f       	sbci	r25, 0xFF	; 255
+ 10e:	08 95       	ret
+
+00000110 <__divmodhi4_neg2>:
+ 110:	70 95       	com	r23
+ 112:	61 95       	neg	r22
+ 114:	7f 4f       	sbci	r23, 0xFF	; 255
+
+00000116 <__divmodhi4_exit>:
+ 116:	08 95       	ret
+
+00000118 <__udivmodhi4>:
+ 118:	aa 1b       	sub	r26, r26
+ 11a:	bb 1b       	sub	r27, r27
+ 11c:	51 e1       	ldi	r21, 0x11	; 17
+ 11e:	07 c0       	rjmp	.+14     	; 0x12e <__udivmodhi4_ep>
+
+00000120 <__udivmodhi4_loop>:
+ 120:	aa 1f       	adc	r26, r26
+ 122:	bb 1f       	adc	r27, r27
+ 124:	a6 17       	cp	r26, r22
+ 126:	b7 07       	cpc	r27, r23
+ 128:	10 f0       	brcs	.+4      	; 0x12e <__udivmodhi4_ep>
+ 12a:	a6 1b       	sub	r26, r22
+ 12c:	b7 0b       	sbc	r27, r23
+
+0000012e <__udivmodhi4_ep>:
+ 12e:	88 1f       	adc	r24, r24
+ 130:	99 1f       	adc	r25, r25
+ 132:	5a 95       	dec	r21
+ 134:	a9 f7       	brne	.-22     	; 0x120 <__udivmodhi4_loop>
+ 136:	80 95       	com	r24
+ 138:	90 95       	com	r25
+ 13a:	bc 01       	movw	r22, r24
+ 13c:	cd 01       	movw	r24, r26
+ 13e:	08 95       	ret
+
+00000140 <_exit>:
+ 140:	f8 94       	cli
+
+00000142 <__stop_program>:
+ 142:	ff cf       	rjmp	.-2      	; 0x142 <__stop_program>
