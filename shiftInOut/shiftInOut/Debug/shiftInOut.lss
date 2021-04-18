@@ -258,13 +258,13 @@ void shiftOut() // ainda não testei mas fiz a parte de Setar e dar Clear no pino
  174:	8e 7f       	andi	r24, 0xFE	; 254
  176:	88 b9       	out	0x08, r24	; 8
 			
-			PORTB |= (1 << clock_shftout); // PINB3,CLK vai pra 1
+			PORTB |= (1 << clock_shftin); // PINB3,CLK vai pra 1
  178:	85 b1       	in	r24, 0x05	; 5
- 17a:	88 60       	ori	r24, 0x08	; 8
+ 17a:	84 60       	ori	r24, 0x04	; 4
  17c:	85 b9       	out	0x05, r24	; 5
-			PORTB &= ~(1 << clock_shftout); // PINB3,CLK vai pra 0
+			PORTB &= ~(1 << clock_shftin); // PINB3,CLK vai pra 0
  17e:	85 b1       	in	r24, 0x05	; 5
- 180:	87 7f       	andi	r24, 0xF7	; 247
+ 180:	8b 7f       	andi	r24, 0xFB	; 251
  182:	85 b9       	out	0x05, r24	; 5
 
 void shiftOut() // ainda não testei mas fiz a parte de Setar e dar Clear no pino
@@ -277,8 +277,8 @@ void shiftOut() // ainda não testei mas fiz a parte de Setar e dar Clear no pino
  188:	28 f3       	brcs	.-54     	; 0x154 <shiftOut+0x4>
 			PORTC &= 0xFE;// 0b11111110 -> desligar PORTC0. (Pinout_serial)
 			
-			PORTB |= (1 << clock_shftout); // PINB3,CLK vai pra 1
-			PORTB &= ~(1 << clock_shftout); // PINB3,CLK vai pra 0
+			PORTB |= (1 << clock_shftin); // PINB3,CLK vai pra 1
+			PORTB &= ~(1 << clock_shftin); // PINB3,CLK vai pra 0
 		}
 		PINB &= ~(1<<pLoad_pin);
  18a:	83 b1       	in	r24, 0x03	; 3

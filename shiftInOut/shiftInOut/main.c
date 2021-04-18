@@ -43,7 +43,7 @@ ler periodicamente o registrador.
 #define clock_shftin PINB2
 #define P_Shftin PINB1
 // talvez possa ser o mesmo clock do extensor entrada
-#define clock_shftout PINB3 // o clock PINB2 deve ser usado, não esse.
+
 #define Pinout_serial PINC0 // saída de dados serial
 #define pLoad_pin PINB7 // controle carga paralela
 
