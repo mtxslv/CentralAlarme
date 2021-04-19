@@ -13,23 +13,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   4 .debug_aranges 000001d0  00000000  00000000  0000387e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00002e0c  00000000  00000000  00003a4e  2**0
+  5 .debug_info   00002e30  00000000  00000000  00003a4e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000802  00000000  00000000  0000685a  2**0
+  6 .debug_abbrev 00000802  00000000  00000000  0000687e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00001df7  00000000  00000000  0000705c  2**0
+  7 .debug_line   00001df7  00000000  00000000  00007080  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  0000053c  00000000  00000000  00008e54  2**2
+  8 .debug_frame  0000053c  00000000  00000000  00008e78  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000218  00000000  00000000  00009390  2**0
+  9 .debug_str    00000218  00000000  00000000  000093b4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000b09  00000000  00000000  000095a8  2**0
+ 10 .debug_loc    00000b09  00000000  00000000  000095cc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 000001c0  00000000  00000000  0000a0b1  2**0
+ 11 .debug_ranges 000001c0  00000000  00000000  0000a0d5  2**0
                   CONTENTS, READONLY, DEBUGGING
  12 .text         00000004  0000369c  0000369c  000037d0  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
- 13 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000a274  2**2
+ 13 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000a298  2**2
                   CONTENTS, READONLY, DEBUGGING
  14 .text.SetBit  00000012  00003646  00003646  0000377a  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
@@ -2658,7 +2658,7 @@ void StopTimer0()
     29a0:	87 b9       	out	0x07, r24	; 7
     29a2:	8e e7       	ldi	r24, 0x7E	; 126
     29a4:	87 b9       	out	0x07, r24	; 7
-    29a6:	8f e1       	ldi	r24, 0x1F	; 31
+    29a6:	8e ef       	ldi	r24, 0xFE	; 254
     29a8:	84 b9       	out	0x04, r24	; 4
     29aa:	87 e0       	ldi	r24, 0x07	; 7
     29ac:	8a b9       	out	0x0a, r24	; 10

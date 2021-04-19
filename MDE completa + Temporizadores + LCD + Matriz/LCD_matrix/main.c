@@ -419,7 +419,7 @@ int main(void)
 	DDRC = 0b01111110;
 	
 	//definções finais - depois dos setups menos o SPI
-	DDRB = 0x1F;
+	DDRB = 0xFE;
 	//DDRB =  (1 << CLK_IN_OUT)|(1 << CS)|(1 << PS_EXTIN)|(1 << PS_EXTOUT)|(1 << PS_EXTIN);
 	DDRD =  (1 << EXT_OUT)|(1 << OUT_UART)|(1 << BUZZER);
 	PORTD = (1 << MATRIZ1)|(1 << MATRIZ2)|(1 << MATRIZ3)|(1 << MATRIZ4);

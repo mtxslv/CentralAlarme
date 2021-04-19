@@ -450,10 +450,10 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x2e0c
+.debug_info     0x0000000000000000     0x2e30
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x5f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
- .debug_info    0x00000000000005f4     0x2818 main.o
+ .debug_info    0x00000000000005f4     0x283c main.o
 
 .debug_abbrev   0x0000000000000000      0x802
  *(.debug_abbrev)
