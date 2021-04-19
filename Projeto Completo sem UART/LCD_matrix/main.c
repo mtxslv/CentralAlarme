@@ -38,10 +38,10 @@
 //#define P_Shftin PINB1
 // talvez possa ser o mesmo clock do extensor entrada
 
-//#define Pinout_serial PINC0 // saÌda de dados serial
+//#define Pinout_serial PINC0 // sa√≠da de dados serial
 //#define pLoad_pin PINB7 // controle carga paralela
 
-// TUDO DE SERIAL SHIFT IN E OUT … AQUI PEGUI«A DE ORGANIZAR J¡ //
+// TUDO DE SERIAL SHIFT IN E OUT √â AQUI PEGUI√áA DE ORGANIZAR J√Å //
 
 uint8_t varLeituraSerial = 0;
 uint8_t varEscritaSerial = 0x00;
@@ -79,11 +79,11 @@ void shiftIn()
  
        if(PINB & (1 << PINB0)){
 	       if(varLeituraSerial | ~(1<<iter)) // 0b00000000 | 0b11111111 = 0b11111111
-				varLeituraSerial = SetBit(varLeituraSerial,iter); // QUANDO FOR 0, COLOCA A SAÕDA PRA 1
+				varLeituraSerial = SetBit(varLeituraSerial,iter); // QUANDO FOR 0, COLOCA A SA√çDA PRA 1
        }
        else{
 	       if(varLeituraSerial & (1<<iter)) 
-				varLeituraSerial = ClearBit(varLeituraSerial,iter); // QUANDO FOR 1, IR¡ SETAR O VALOR NO REGISTRADOR
+				varLeituraSerial = ClearBit(varLeituraSerial,iter); // QUANDO FOR 1, IR√Å SETAR O VALOR NO REGISTRADOR
        }
 	   	PORTB |= (1 << CLK_IN_OUT); // CLK vai pra 1
 		PORTB &= ~(1 << CLK_IN_OUT); // CLK vai pra 0
@@ -103,12 +103,12 @@ ST_CP == parallel load pin
 SH_CP == clock pin
 */
 
-void shiftOut() // ainda n„o testei mas fiz a parte de Setar e dar Clear no pino
+void shiftOut() // ainda n√£o testei mas fiz a parte de Setar e dar Clear no pino
 {
     // pinos de controle do CI
 //    PINB &= ~(1<<pLoad_pin);// PINB7
 		for (uint8_t iter = 0; iter<8; iter++){
-			if( ((varEscritaSerial>>iter)& 0x1) ) // aqui deve vir a resposta a "qual o bit que est· guardado na posiÁ„o iter do byte a ser enviado?"
+			if( ((varEscritaSerial>>iter)& 0x1) ) // aqui deve vir a resposta a "qual o bit que est√° guardado na posi√ß√£o iter do byte a ser enviado?"
 			PORTD |= (1<<EXT_OUT); // 0b00000001 -> ligar PORTC0. (Pinout_serial)
 			else
 			PORTD &= ~(1<<EXT_OUT);// 0b11111110 -> desligar PORTC0. (Pinout_serial)
@@ -122,11 +122,11 @@ void shiftOut() // ainda n„o testei mas fiz a parte de Setar e dar Clear no pino
    for (uint8_t iter = 0; iter<8 ; iter++){
        if(PINB & (1 << Pinout_serial))
        {
-           if(varEscritaSerial & ~(1<<iter)) OutSerial(); // QUANDO FOR 0, COLOCA A SAÕDA PRA 1
+           if(varEscritaSerial & ~(1<<iter)) OutSerial(); // QUANDO FOR 0, COLOCA A SA√çDA PRA 1
        }
        else
        {
-           if(varEscritaSerial & (1<<iter)) OutSerial(); // QUANDO FOR 1, IR¡ SETAR O VALOR NO REGISTRADOR
+           if(varEscritaSerial & (1<<iter)) OutSerial(); // QUANDO FOR 1, IR√Å SETAR O VALOR NO REGISTRADOR
        }           
 	   
 	   
@@ -167,7 +167,7 @@ int cont_b = 0;
 bool flag_sensor = 0;
 bool flag_D_sensor = 0;
 
-// P‚nico //
+// P√¢nico //
 bool flag_p = 0;
 
 // zona + sensor //
@@ -197,9 +197,9 @@ int cont_s = 0;
 
 struct zona{
 
-	// N˙mero da zona //
+	// N√∫mero da zona //
 	int id;
-	// flag de ativaÁ„o da zona //
+	// flag de ativa√ß√£o da zona //
 	bool active;
 	// Sensores //
 	bool sensor0;
@@ -217,14 +217,14 @@ struct sensor{
 
 	//id do sensor //
 	int id;
-	// se est· ativo //
+	// se est√° ativo //
 	bool active;
 	// se o sensor detectou algo //
 	int zonaa;
 	
 } sensor0, sensor1, sensor2, sensor3, sensor4, sensor5, sensor6, sensor7; 
 
-/*############ FUN«’ES #############*/
+/*############ FUN√á√ïES #############*/
 // DELAYS //
 void delay_ms(long int n);
 void delay_ns(long int n);
@@ -260,7 +260,7 @@ void msg_programacao();
 // ALTERA SENHA //
 void msg_altera_senha();
 
-// HABILITA«√O E DESABILITA«√O DE SENSOR //
+// HABILITA√á√ÉO E DESABILITA√á√ÉO DE SENSOR //
 void hab_sensor(int n);
 void msg_h_sensores();
 void msg_d_sensores();
@@ -270,12 +270,12 @@ void msg_h_zona();
 void msg_d_zona();
 void hab_zonas(int n);
 
-// ASSOCIA«√O DE SENSOR COM ZONA //
+// ASSOCIA√á√ÉO DE SENSOR COM ZONA //
 void msg_h_ass();
 void msg_d_ass();
 void assSensorZona(int x, int y);
 
-// AJUSTE TEMPORIZADOR DE ATIVA«√O //
+// AJUSTE TEMPORIZADOR DE ATIVA√á√ÉO //
 void set_timeA();
 void msg_temp_ativ();
 
@@ -362,12 +362,12 @@ enum states{
 	desativado,
 	senhaMcorreta,
 	senhaAcorreta,
-	senhaAnova,  //qnd tem q salvar algo vir· um estado
+	senhaAnova,  //qnd tem q salvar algo vir√° um estado
 	ativado,
 	panico,
 	programacao,
 	
-	// sÛ pra organizar //
+	// s√≥ pra organizar //
 	inserir_senha,
 	inserir_senhaN,
 	inserir_senhaA,
@@ -419,18 +419,18 @@ int main(void)
 	//DDRD = 0xFF; // PORTD ? sa?da (s? pra teste)
 	/* Replace with your application code */
 	
-	// saÌda: PD2 (EXT_OUT), PB1 (CLK_IN_OUT), PB6 (PS_EXTIN), PB7 (PS_EXTOUT) || entrada: PB0 (EXT_IN)
+	// sa√≠da: PD2 (EXT_OUT), PB1 (CLK_IN_OUT), PB6 (PS_EXTIN), PB7 (PS_EXTOUT) || entrada: PB0 (EXT_IN)
 	
 	//DISPLAY PINOS
 	DDRC = 0x3F; //0b0011 1111
 	
-	//definÁıes finais - depois dos setups menos o SPI
+	//defin√ß√µes finais - depois dos setups menos o SPI
 	DDRB = 0xFE;
 	//DDRB =  (1 << CLK_IN_OUT)|(1 << CS)|(1 << PS_EXTIN)|(1 << PS_EXTOUT)|(1 << PS_EXTIN);
 	DDRD =  (1 << EXT_OUT)|(1 << OUT_UART)|(1 << BUZZER);
 	PORTD = (1 << MATRIZ1)|(1 << MATRIZ2)|(1 << MATRIZ3)|(1 << MATRIZ4);
 	
-	// INIALIZA«’ES DO SISTEMA //
+	// INIALIZA√á√ïES DO SISTEMA //
 	SetupTimer1();
 	SetupTimer0();
 	init_int1();
@@ -444,11 +444,11 @@ int main(void)
 		
 		//varEscritaSerial = varLeituraSerial;
 		shiftOut();
-		// SWITCH CASE PARA A SELE«√O DO MODO //
+		// SWITCH CASE PARA A SELE√á√ÉO DO MODO //
         switch(state){
 			// ROTINAS PRINCIPAIS  //
 			case recuperacao:
-			StopTimer1(); // para o timer, caso a m·quina estivesse em programaÁ„o
+			StopTimer1(); // para o timer, caso a m√°quina estivesse em programa√ß√£o
 			// aqui pararia a sirene
 			timeout = 12;
 			t_sirene = 5;
@@ -469,9 +469,9 @@ int main(void)
 			case programacao:
 			msg_programacao();
 			// inserir senha //
-			// ver se a senha est· correta //
+			// ver se a senha est√° correta //
 			// init timer do timeout //
-			// fazer a configuraÁıes restantes //
+			// fazer a configura√ß√µes restantes //
 			break;
 			case panico:
 			msg_panico();
@@ -520,12 +520,12 @@ int main(void)
 			
 			break;
 			
-			// ASSCIA«√O D SENSOR E ZONA //
+			// ASSCIA√á√ÉO D SENSOR E ZONA //
 			case AssSensorZona:
 			
 			break;
 			
-			// Tempo de ativaÁ„o //
+			// Tempo de ativa√ß√£o //
 			case AjusteTAtivacao:
 			
 			break;
@@ -544,7 +544,7 @@ int main(void)
     }
 }
 
-// INTERRUP«√O EXTERNA //
+// INTERRUP√á√ÉO EXTERNA //
 
 void init_int1(){
 	
@@ -574,19 +574,19 @@ ISR(INT1_vect){
 			senha_arm(count_senha, "1");
 			count_senha++;
 		}
-		// Senha de AtivaÁ„o //
+		// Senha de Ativa√ß√£o //
 		if((state == inserir_senhaA) & (count_senha < 4)){
 			send_word_lcd(0b00110001);
 			insert_senha(count_senha, "1");
 			count_senha++;
 		}
-		// Senha de desativaÁ„o //
+		// Senha de desativa√ß√£o //
 		if((state == inserir_senhaD) & (count_senha < 4)){
 			send_word_lcd(0b00110001);
 			insert_senha(count_senha, "1");
 			count_senha++;
 		}
-		// Escolhe o endereÁo da senha a ser alterada //
+		// Escolhe o endere√ßo da senha a ser alterada //
 		if((state == programacao) & (flag_a_senha == 1)){
 			state = inserir_senhaN;
 			msg_altera_senha();
@@ -601,7 +601,7 @@ ISR(INT1_vect){
 		if((state == HabZona) & (flag_sensor == 0)){
 			hab_zonas(1);
 		}
-		// ESOLHER O SENSOR DA ASSOCIA«√O //
+		// ESOLHER O SENSOR DA ASSOCIA√á√ÉO //
 		if((state == AssSensorZona) & (flag_z1 == 0)){
 			if(flag_z == 0){
 				idsensor = 1;
@@ -621,7 +621,7 @@ ISR(INT1_vect){
 			get_timeS[cont_s] = 1;
 			cont_s++;
 		}
-		// DETERMINAR T ATIVA«√O //
+		// DETERMINAR T ATIVA√á√ÉO //
 		if((state == AjusteTAtivacao) & (cont_t < 3)){
 			get_timeA[cont_aa] = 1;
 			cont_aa++;
@@ -641,13 +641,13 @@ ISR(INT1_vect){
 			senha_arm(count_senha, "2");
 			count_senha++;
 		}
-		// Senha de AtivaÁ„o //
+		// Senha de Ativa√ß√£o //
 		if((state == inserir_senhaA) & (count_senha < 4)){
 			send_word_lcd(0b00110010);
 			insert_senha(count_senha, "2");
 			count_senha++;
 		}
-		// Senha de desativaÁ„o //
+		// Senha de desativa√ß√£o //
 		if((state == inserir_senhaD) & (count_senha < 4)){
 			send_word_lcd(0b00110010);
 			insert_senha(count_senha, "2");
@@ -655,11 +655,11 @@ ISR(INT1_vect){
 		}
 		// Alterar a senha //
 		if((state == programacao) & ((flag_a_senha == 0) & (flag_timeout == 0))){
-			// flag para escolher o endereÁo da senha //
+			// flag para escolher o endere√ßo da senha //
 			flag_a_senha = 1;
 		}
 		else if((state == programacao) & (flag_a_senha == 1)){
-			// Escolhe o endereÁo da senha a ser alterada //
+			// Escolhe o endere√ßo da senha a ser alterada //
 			state = inserir_senhaN;
 			msg_altera_senha();
 			addr_senha = 2;
@@ -673,7 +673,7 @@ ISR(INT1_vect){
 		if((state == HabZona) & (flag_sensor == 0)){
 			hab_zonas(2);
 		}
-		// ESOLHER O SENSOR DA ASSOCIA«√O //
+		// ESOLHER O SENSOR DA ASSOCIA√á√ÉO //
 		if((state == AssSensorZona) & (flag_z1 == 0)){
 			if(flag_z == 0){
 				idsensor = 2;
@@ -693,7 +693,7 @@ ISR(INT1_vect){
 			get_timeS[cont_s] = 2;
 			cont_s++;
 		}
-		// DETERMINAR T ATIVA«√O //
+		// DETERMINAR T ATIVA√á√ÉO //
 		if((state == AjusteTAtivacao) & (cont_t < 3)){
 			get_timeA[cont_aa] = 2;
 			cont_aa++;
@@ -713,13 +713,13 @@ ISR(INT1_vect){
 			senha_arm(count_senha, "3");
 			count_senha++;
 		}
-		// Senha de AtivaÁ„o //
+		// Senha de Ativa√ß√£o //
 		if((state == inserir_senhaA) & (count_senha < 4)){
 			send_word_lcd(0b00110011);
 			insert_senha(count_senha, "3");
 			count_senha++;
 		}
-		// Senha de desativaÁ„o //
+		// Senha de desativa√ß√£o //
 		if((state == inserir_senhaD) & (count_senha < 4)){
 			send_word_lcd(0b00110011);
 			insert_senha(count_senha, "3");
@@ -729,13 +729,13 @@ ISR(INT1_vect){
 		if((state == HabSensor) & (flag_sensor == 0)){
 			hab_sensor(3);
 		}
-		// FUN«√O DE HABILITAR SENSOR //
+		// FUN√á√ÉO DE HABILITAR SENSOR //
 		if((state == programacao) & ((flag_a_senha == 0) & (flag_timeout == 0))){
 			state = HabSensor;
 			if(flag_D_sensor == 0) msg_h_sensores();
 			if(flag_D_sensor == 1) msg_d_sensores();
 		}
-		// Escolhe o endereÁo da senha a ser alterada //
+		// Escolhe o endere√ßo da senha a ser alterada //
 		if((state == programacao) & (flag_a_senha == 1)){
 			state = inserir_senhaN;
 			msg_altera_senha();
@@ -746,7 +746,7 @@ ISR(INT1_vect){
 		if((state == HabZona) & (flag_sensor == 0)){
 			hab_zonas(3);
 		}
-		// ESOLHER O SENSOR DA ASSOCIA«√O //
+		// ESOLHER O SENSOR DA ASSOCIA√á√ÉO //
 		if((state == AssSensorZona) & (flag_z1 == 0)){
 			if(flag_z == 0){
 				idsensor = 3;
@@ -766,7 +766,7 @@ ISR(INT1_vect){
 			get_timeS[cont_s] = 3;
 			cont_s++;
 		}
-		// DETERMINAR T ATIVA«√O //
+		// DETERMINAR T ATIVA√á√ÉO //
 		if((state == AjusteTAtivacao) & (cont_t < 3)){
 			get_timeA[cont_aa] = 3;
 			cont_aa++;
@@ -774,7 +774,7 @@ ISR(INT1_vect){
 	}
 	else if(valor_pinod == 0xC0){
 		// P
-		// Inserir a senha Mestre para o modo de ProgramaÁ„o //
+		// Inserir a senha Mestre para o modo de Programa√ß√£o //
 		if(state == desativado){
 			state = inserir_senha;
 			msg_inserir_senha();
@@ -795,13 +795,13 @@ ISR(INT1_vect){
 			senha_arm(count_senha, "4");
 			count_senha++;
 		}
-		// SENHA DE ATIVA«√O //
+		// SENHA DE ATIVA√á√ÉO //
 		if((state == inserir_senhaA) & (count_senha < 4)){
 			send_word_lcd(0b00110100);
 			insert_senha(count_senha, "4");
 			count_senha++;
 		}
-		// SENHA DE DESATIVA«√O //
+		// SENHA DE DESATIVA√á√ÉO //
 		if((state == inserir_senhaD) & (count_senha < 4)){
 			send_word_lcd(0b00110100);
 			insert_senha(count_senha, "4");
@@ -811,12 +811,12 @@ ISR(INT1_vect){
 		if((state == HabSensor) & (flag_sensor == 0)){
 			hab_sensor(4);
 		}
-		// ESOLHER O SENSOR DA ASSOCIA«√O //
+		// ESOLHER O SENSOR DA ASSOCIA√á√ÉO //
 		if((state == AssSensorZona) & ((flag_z1 == 0) & (flag_z == 0))){
 			idsensor = 4;
 			flag_z1 = 1;
 		}
-		// FUN«√O DE ASSOCIA«√O DE SENSOR E ZONA //
+		// FUN√á√ÉO DE ASSOCIA√á√ÉO DE SENSOR E ZONA //
 		if((state == programacao) & ((flag_a_senha == 0) & (flag_timeout == 0))){
 			state = AssSensorZona;
 			if(flag_D_sensor == 0) msg_h_ass();
@@ -832,7 +832,7 @@ ISR(INT1_vect){
 			get_timeS[cont_s] = 4;
 			cont_s++;
 		}
-		// DETERMINAR T ATIVA«√O //
+		// DETERMINAR T ATIVA√á√ÉO //
 		if((state == AjusteTAtivacao) & (cont_t < 3)){
 			get_timeA[cont_aa] = 4;
 			cont_aa++;
@@ -853,13 +853,13 @@ ISR(INT1_vect){
 			senha_arm(count_senha, "5");
 			count_senha++;
 		}
-		// senha de ativaÁ„o //
+		// senha de ativa√ß√£o //
 		if((state == inserir_senhaA) & (count_senha < 4)){
 			send_word_lcd(0b00110101);
 			insert_senha(count_senha, "5");
 			count_senha++;
 		}
-		// Senha de desativaÁ„o //
+		// Senha de desativa√ß√£o //
 		if((state == inserir_senhaD) & (count_senha < 4)){
 			send_word_lcd(0b00110101);
 			insert_senha(count_senha, "5");
@@ -869,13 +869,13 @@ ISR(INT1_vect){
 		if((state == HabSensor) & (flag_sensor == 0)){
 			hab_sensor(5);
 		}
-		// FUN«√O DE HAB ZONA //
+		// FUN√á√ÉO DE HAB ZONA //
 		if((state == programacao) & ((flag_a_senha == 0) & (flag_timeout == 0))){
 			state = HabZona;
 			if(flag_D_sensor == 0) msg_h_zona();
 			if(flag_D_sensor == 1) msg_d_zona();
 		}
-		// ESOLHER O SENSOR DA ASSOCIA«√O //
+		// ESOLHER O SENSOR DA ASSOCIA√á√ÉO //
 		if((state == AssSensorZona) & ((flag_z1 == 0) & (flag_z == 0))){
 			idsensor = 5;
 			flag_z1 = 1;
@@ -890,7 +890,7 @@ ISR(INT1_vect){
 			get_timeS[cont_s] = 5;
 			cont_s++;
 		}
-		// DETERMINAR T ATIVA«√O //
+		// DETERMINAR T ATIVA√á√ÉO //
 		if((state == AjusteTAtivacao) & (cont_t < 3)){
 			get_timeA[cont_aa] = 5;
 			cont_aa++;
@@ -911,13 +911,13 @@ ISR(INT1_vect){
 			senha_arm(count_senha, "6");
 			count_senha++;
 		}
-		// senha de ativaÁ„o //
+		// senha de ativa√ß√£o //
 		if((state == inserir_senhaA) & (count_senha < 4)){
 			send_word_lcd(0b00110110);
 			insert_senha(count_senha, "6");
 			count_senha++;
 		}
-		// Senha de desativaÁ„o //
+		// Senha de desativa√ß√£o //
 		if((state == inserir_senhaD) & (count_senha < 4)){
 			send_word_lcd(0b00110110);
 			insert_senha(count_senha, "6");
@@ -927,7 +927,7 @@ ISR(INT1_vect){
 		if((state == HabSensor) & (flag_sensor == 0)){
 			hab_sensor(6);
 		}
-		// ESOLHER O SENSOR DA ASSOCIA«√O //
+		// ESOLHER O SENSOR DA ASSOCIA√á√ÉO //
 		if((state == AssSensorZona) & ((flag_z1 == 0) & (flag_z == 0))){
 			idsensor = 6;
 			flag_z1 = 1;
@@ -942,13 +942,13 @@ ISR(INT1_vect){
 			get_timeS[cont_s] = 6;
 			cont_s++;
 		}
-		// Temporizador de ativaÁ„o //
+		// Temporizador de ativa√ß√£o //
 		if((state == programacao) & ((flag_a_senha == 0) & (flag_timeout == 0))){
 			state = AjusteTAtivacao;
 			flag_tat = 1;
 			msg_temp_ativ();
 		}
-		// DETERMINAR T ATIVA«√O //
+		// DETERMINAR T ATIVA√á√ÉO //
 		if((state == AjusteTAtivacao) & (cont_t < 3)){
 			get_timeA[cont_aa] = 6;
 			cont_aa++;
@@ -983,13 +983,13 @@ ISR(INT1_vect){
 			senha_arm(count_senha, "7");
 			count_senha++;
 		}
-		// senha de ativaÁ„o //
+		// senha de ativa√ß√£o //
 		if((state == inserir_senhaA) & (count_senha < 4)){
 			send_word_lcd(0b00110111);
 			insert_senha(count_senha, "7");
 			count_senha++;
 		}
-		// Senha de desativaÁ„o //
+		// Senha de desativa√ß√£o //
 		if((state == inserir_senhaD) & (count_senha < 4)){
 			send_word_lcd(0b00110111);
 			insert_senha(count_senha, "6");
@@ -999,7 +999,7 @@ ISR(INT1_vect){
 		if((state == HabSensor) & (flag_sensor == 0)){
 			hab_sensor(7);
 		}
-		// ESOLHER O SENSOR DA ASSOCIA«√O //
+		// ESOLHER O SENSOR DA ASSOCIA√á√ÉO //
 		if((state == AssSensorZona) & ((flag_z1 == 0) & (flag_z == 0))){
 			idsensor = 7;
 			flag_z1 = 1;
@@ -1020,7 +1020,7 @@ ISR(INT1_vect){
 			get_timeS[cont_s] = 7;
 			cont_s++;
 		}
-		// DETERMINAR T ATIVA«√O //
+		// DETERMINAR T ATIVA√á√ÉO //
 		if((state == AjusteTAtivacao) & (cont_t < 3)){
 			get_timeA[cont_aa] = 7;
 			cont_aa++;
@@ -1066,7 +1066,7 @@ ISR(INT1_vect){
 			flag_tsirene = 1;
 			msg_time_sirene();
 		}
-		// DETERMINAR T ATIVA«√O //
+		// DETERMINAR T ATIVA√á√ÉO //
 		if((state == AjusteTAtivacao) & (cont_t < 3)){
 			get_timeA[cont_aa] = 8;
 			cont_aa++;
@@ -1106,7 +1106,7 @@ ISR(INT1_vect){
 			get_timeS[cont_s] = 9;
 			cont_s++;
 		}
-		// DETERMINAR T ATIVA«√O //
+		// DETERMINAR T ATIVA√á√ÉO //
 		if((state == AjusteTAtivacao) & (cont_t < 3)){
 			get_timeA[cont_aa] = 9;
 			cont_aa++;
@@ -1127,24 +1127,8 @@ ISR(INT1_vect){
 	}
 	else if(valor_pinod == 0x30){
 		// R
-		// Recuper„Á„o //
-		state = recuperacao;
-		clear_Display();
-		msg_restauracao();
-		
-		// REINICIALIZANDO TODO OS DADOS //
-		flag_p = 0;
-		flag_sensor = 0;
-		flag_D_sensor = 0;
-		flag_a_senha = 0;
-		// desativando a interrup„o externa //
-		EICRA = (0<<ISC11) | (0<<ISC10);
-		EIMSK = (0<<INT1);
-		
-		delay_ms(50);
-		
-		// Inicializando algumas coisas //
-		init_int1();
+		// Recuper√£√ß√£o //
+		StartTimer0();
 	}
 	else if(valor_pinod == 0x20){
 		// 0
@@ -1161,13 +1145,13 @@ ISR(INT1_vect){
 			senha_arm(count_senha, "0");
 			count_senha++;
 		}
-		// Senha de AtivaÁ„o //
+		// Senha de Ativa√ß√£o //
 		if((state == inserir_senhaA) & (count_senha < 4)){
 			send_word_lcd(0b00110000);
 			insert_senha(count_senha, "0");
 			count_senha++;
 		}
-		// Senha de DesativaÁ„o //
+		// Senha de Desativa√ß√£o //
 		if((state == inserir_senhaD) & (count_senha < 4)){
 			send_word_lcd(0b00110000);
 			insert_senha(count_senha, "0");
@@ -1177,7 +1161,7 @@ ISR(INT1_vect){
 		if((state == HabSensor) & (flag_sensor == 0)){
 			hab_sensor(0);
 		}
-		// ESOLHER O SENSOR DA ASSOCIA«√O //
+		// ESOLHER O SENSOR DA ASSOCIA√á√ÉO //
 		if((state == AssSensorZona) & ((flag_z1 == 0) & (flag_z == 0))){
 			idsensor = 0;
 			flag_z1 = 1;
@@ -1192,7 +1176,7 @@ ISR(INT1_vect){
 			get_timeS[cont_s] = 0;
 			cont_s++;
 		}
-		// DETERMINAR T ATIVA«√O //
+		// DETERMINAR T ATIVA√á√ÉO //
 		if((state == AjusteTAtivacao) & (cont_t < 3)){
 			get_timeA[cont_aa] = 0;
 			cont_aa++;
@@ -1200,7 +1184,7 @@ ISR(INT1_vect){
 	}
 	else if(valor_pinod == 0x10){
 		// S
-		// P‚nico //
+		// P√¢nico //
 		if(flag_p == 0){
 			if(state == programacao || state == ativado)
 			{
@@ -1310,7 +1294,7 @@ void delay_ns(long int n){
 /*
 void send_instruction_lcd(uint8_t data){
 	PORTB &= 0xC0;
-	PORTB &= ~(1<<RS);  // RS = 0 => intruÁıes
+	PORTB &= ~(1<<RS);  // RS = 0 => intru√ß√µes
 	PORTB |= (1 << EN);  // Seta o enable
 	PORTB |= (data >> 4); // seta barramento de dados com nibble mais significativo
 	PORTB &= ~(1<<EN);  // EN = 0
@@ -1322,7 +1306,7 @@ void send_instruction_lcd(uint8_t data){
 }
 void send_instruction_lcd_nibble(uint8_t data){
 	PORTB &= 0xC0;
-	PORTB &= ~(1<<RS);  // RS = 0 => intruÁıes
+	PORTB &= ~(1<<RS);  // RS = 0 => intru√ß√µes
 	PORTB |= (1 << EN);  // Seta o enable
 	PORTB |= data; // seta barramento de dados com nibble mais significativo
 	PORTB &= ~(1<<EN);  // EN = 0
@@ -1339,7 +1323,7 @@ void inicializa_display(){
 	
 	send_instruction_lcd_nibble(0x02); // Return Home
 	delay_ns(40);
-	send_instruction_lcd(0x28); // Determinar o modo de operaÁ„o
+	send_instruction_lcd(0x28); // Determinar o modo de opera√ß√£o
 	// 4 bit, matriz 5x7 e 2 linhas
 	delay_ns(40);
 	send_instruction_lcd(0x01); // clear display
@@ -1366,7 +1350,7 @@ void send_word_lcd(uint8_t data){
 void set_DDRAM_ADDR(uint8_t pos){
 	uint8_t data = 0x80 | pos;
 	PORTB &= 0xC0;
-	PORTB &= ~(1<<RS);  // RS = 0 => intruÁıes
+	PORTB &= ~(1<<RS);  // RS = 0 => intru√ß√µes
 	PORTB |= (1 << EN);  // Seta o enable
 	PORTB |= (data >> 4); // seta barramento de dados com nibble mais significativo
 	PORTB &= ~(1<<EN);  // EN = 0
@@ -1405,7 +1389,7 @@ void clear_Display(){
 
 void send_instruction_lcd(uint8_t data){
 	PORTC &= 0xC0;
-	PORTC &= ~(1 << RS_LCD);  // RS = 0 => intruÁıes
+	PORTC &= ~(1 << RS_LCD);  // RS = 0 => intru√ß√µes
 	PORTC |= (1 << EN_LCD);  // Seta o enable
 	PORTC |= (data >> 4); // seta barramento de dados com nibble mais significativo
 	PORTC &= ~(1 << EN_LCD);  // EN = 0
@@ -1418,7 +1402,7 @@ void send_instruction_lcd(uint8_t data){
 
 void send_instruction_lcd_nibble(uint8_t data){
 	PORTC &= 0xC0;
-	PORTC &= ~(1 << RS_LCD);  // RS = 0 => intruÁıes
+	PORTC &= ~(1 << RS_LCD);  // RS = 0 => intru√ß√µes
 	PORTC |= (1 << EN_LCD);  // Seta o enable
 	PORTC |= data; // seta barramento de dados com nibble mais significativo
 	PORTC &= ~(1 << EN_LCD);  // EN = 0
@@ -1440,7 +1424,7 @@ void inicializa_display(){
 	send_instruction_lcd_nibble(0x02); // Return Home
 	delay_ns(40);
 
-	send_instruction_lcd(0x28); // Determinar o modo de operaÁ„o
+	send_instruction_lcd(0x28); // Determinar o modo de opera√ß√£o
 	// 4 bit, matriz 5x7 e 2 linhas
 	delay_ns(40);
 
@@ -1472,7 +1456,7 @@ void send_word_lcd(uint8_t data){
 void set_DDRAM_ADDR(uint8_t pos){
 	uint8_t data = 0x80 | pos;
 	PORTC &= 0xC0;
-	PORTC &= ~(1 << RS_LCD);  // RS = 0 => intruÁıes
+	PORTC &= ~(1 << RS_LCD);  // RS = 0 => intru√ß√µes
 	PORTC |= (1 << EN_LCD);  // Seta o enable
 	PORTC |= (data >> 4); // seta barramento de dados com nibble mais significativo
 	PORTC &= ~(1 << EN_LCD);  // EN = 0
@@ -1906,9 +1890,9 @@ void hab_sensor(int n){
 	
 	flag_sensor = 1; // Essa flag serve para dizer se ja foi 
 					 //	selecionado o sensor/Zona a ser habilitado ou desabilitado //
-	// Colocar as funÁıes //
+	// Colocar as fun√ß√µes //
 	if(flag_D_sensor == 0){
-		// HabilitaÁ„o do sensor //
+		// Habilita√ß√£o do sensor //
 		if(n == 0){
 			sensor0.active = 1;
 		}else if(n == 1){
@@ -1928,7 +1912,7 @@ void hab_sensor(int n){
 		}
 		
 	}else if(flag_D_sensor == 1){
-		// DesabilitaÁ„o do sensor //
+		// Desabilita√ß√£o do sensor //
 		if(n == 0){
 		sensor0.active = 0;
 		}else if(n == 1){
@@ -1957,9 +1941,9 @@ void hab_zonas(int n){
 	
 	flag_sensor = 1; // Essa flag serve para dizer se ja foi
 	//	selecionado o sensor/Zona a ser habilitado ou desabilitado //
-	// Colocar as funÁıes //
+	// Colocar as fun√ß√µes //
 	if(flag_D_sensor == 0){
-		// HabilitaÁ„o da Zona //
+		// Habilita√ß√£o da Zona //
 		if(n == 1){
 			zona1.active = 1;
 			var_aux_1 |= 0x20;
@@ -1972,7 +1956,7 @@ void hab_zonas(int n){
 		}
 		
 	}else if(flag_D_sensor == 1){
-		// DesabilitaÁ„o da Zona //
+		// Desabilita√ß√£o da Zona //
 		if(n == 1){
 			zona1.active = 0;
 			var_aux_1 &= 0xDF;
@@ -2063,7 +2047,7 @@ void set_timeout(){
 	
 }
 
-// SET TIME ATIVA«√O //
+// SET TIME ATIVA√á√ÉO //
 
 void set_timeA(){
 	
@@ -2158,14 +2142,11 @@ void activate_sirene(){
 	
 }
 
-//////////////////////////////////////////////  PARTE DE ALISSON \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\/
-
-
 /////////////////////////// TIMER 1 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\/
 void SetupTimer1()
 {
-	TCCR1B |= (1<<WGM12); //WGM12- modo CTC comparaÁ„o com A
-	TIMSK1 |= (1<<OCIE1A); // interrupÁ„o quanto der match com A ligada
+	TCCR1B |= (1<<WGM12); //WGM12- modo CTC compara√ß√£o com A
+	TIMSK1 |= (1<<OCIE1A); // interrup√ß√£o quanto der match com A ligada
 	OCR1A = 31250; // conta um segundo
 	
 }
@@ -2173,36 +2154,34 @@ void SetupTimer1()
 void StartTimer1()
 {
 	// para contar 1 segundo o OCR1A deve ter o valor de 31250.. e o prescale 256
-	TCCR1B |= (1 << CS12) + (0 << CS11) + (0 << CS10); //setando o prescaler = 256, a contagem comeÁa
+	TCCR1B |= (1 << CS12) + (0 << CS11) + (0 << CS10); //setando o prescaler = 256, a contagem come√ßa
 	
 }
 
 void StopTimer1()
 {
 	TCCR1B &= ~((1 << CS12) + (1 << CS11) + (1 << CS10)); // sem prescaler, o timer para
-	TCNT1 = 0; // zerado para n„o atrapalhar a prÛxima contagem
+	TCNT1 = 0; // zerado para n√£o atrapalhar a pr√≥xima contagem
 	
 }
 
 /////////////////////////// TIMER 0 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\/
 void StartTimer0()
 {
-	TCCR0B |= (0 << CS02) | (0 << CS01) | (1 << CS00); //setando o prescaler, a contagem comeÁa
-	
+    TCCR0B |= (1 << CS02) | (0 << CS01) | (1 << CS00); //setando o prescaler = 1024
 }
-
 void StopTimer0()
 {
-	TCCR0B &= ~((1 << CS02) | (1 << CS01) | (1 << CS00)); // sem prescaler, o timer para
-	TCNT0 = 0; // zerado para n„o atrapalhar a prÛxima contagem
-	
+    TCCR0B &= ~((1 << CS02) | (1 << CS01) | (1 << CS00)); // sem prescaler, o timer para
+    TCNT0 = 0; // zerado para n√£o atrapalhar a pr√≥xima contagem
+    
 }
 
 void SetupTimer0()
 {
-	TCCR0A |= (1<<WGM01); //WGM12-CTC mode | clkIO/1 (no prescaling)
-	TIMSK0 |= (1<<OCIE0A); // Output Compare A Match Interrupt Enable
-	
+    TCCR0A |= (1<<WGM01); //WGM01 - modo CTC
+    TIMSK0 |= (1<<OCIE0A); // Output Compare A Match Interrupt Enable  
+    OCR0A = 195;
 }
 
 void ZerarTemps()
@@ -2223,100 +2202,9 @@ void StopSirene()
 	PORTD &= (0 << BUZZER); // sirene
 }
 
-//////////////////////////////   INTERRUP«’ES  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\/
-/*ISR(INT1_vect){
-	valor_pinod = (PIND & ((1 << MATRIZ1)|(1 << MATRIZ2)|(1 << MATRIZ3)|(1 << MATRIZ4)));
-	
-	if(valor_pinod == 0xF0){
-		// 1
-		if(state == senha) send_word_lcd(0b00110001);
-	}
-	else if(valor_pinod == 0xE0){
-		// 2
-		if(state == senha) send_word_lcd(0b00110010);
-	}
-	else if(valor_pinod == 0xD0){
-		// 3
-		if(state == senha) send_word_lcd(0b00110011);
-	}
-	else if(valor_pinod == 0xC0){
-		// P
-		if(state == desativado)
-		{
-			state = programacao;
-			StartTimer1();
-		}
-		
-	}
-	else if(valor_pinod == 0xB0){
-		// 4
-		if(state == senha) send_word_lcd(0b00110100);
-	}
-	else if(valor_pinod == 0xA0){
-		// 5
-		if(state == senha) send_word_lcd(0b00110101);
-	}
-	else if(valor_pinod == 0x90){
-		// 6
-		if(state == senha) send_word_lcd(0b00110110);
-	}
-	else if(valor_pinod == 0x80){
-		// A
-		if(state == desativado)
-		{
-			StartTimer1();
-		}
-	}
-	else if(valor_pinod == 0x70){
-		// 7
-		if(state == senha) send_word_lcd(0b00110111);
-	}
-	else if(valor_pinod == 0x60){
-		// 8
-		if(state == senha) send_word_lcd(0b00111000);
-	}
-	else if(valor_pinod == 0x50){
-		// 9
-		if(state == senha) send_word_lcd(0b00111001);
-	}
-	else if(valor_pinod == 0x40){
-		// D
-	}
-	else if(valor_pinod == 0x30){
-		// R
-		state = recuperacao;
-	}
-	else if(valor_pinod == 0x20){
-		// 0
-		if(state == senha) send_word_lcd(0b00110000);
-	}
-	else if(valor_pinod == 0x10){
-		// S
-		if(state == panico)
-		{
-			StopSirene();
-			state = desativado;
-		}
-		else
-		{
-			if(state == programacao || state == ativado)
-			{
-				StopTimer1(); // para o Timer 1, caso ele estivesse
-				ZerarTemps(); // zera os contadores que estavam ligados
-			}
-			StartSirene();
-			state = panico;
-		}
-	}
-	else if(valor_pinod == 0x00){
-		// E
-		//if(state == senha && (flags == 5 || flags == 4)) ;
-	}
-}*/
-
 ISR(TIMER1_COMPA_vect)
-// N√O PRECISA PARAR A SIRENE NA ROTINA ATIVADO, APENAS ATIV¡-LA - A CONTAGEM J¡ FAZ A PARADA, MAS ISSO PODE SER MUDADO SE DESEJADO
-// N√O PRECISA MUDAR DE ESTADO FORA DO TIMER - NO FINAL DA CONTAGEM, J¡ … FEITA A TRANSFER NCIA DE ESTADO, MAS ISSO PODE SER MUDADO SE DESEJADO
+// N√ÉO PRECISA PARAR A SIRENE NA ROTINA ATIVADO, APENAS ATIV√Å-LA - A CONTAGEM J√Å FAZ A PARADA, MAS ISSO PODE SER MUDADO SE DESEJADO
+// N√ÉO PRECISA MUDAR DE ESTADO FORA DO TIMER - NO FINAL DA CONTAGEM, J√Å √â FEITA A TRANSFER√äNCIA DE ESTADO, MAS ISSO PODE SER MUDADO SE DESEJADO
 {
 	
 	if(state == programacao)
@@ -2367,4 +2255,43 @@ ISR(TIMER1_COMPA_vect)
 		}
 		
 	}
+}
+
+ISR(TIMER0_COMPA_vect)
+{
+    if(PIND & (1 << INT_MATRIZ))
+    {
+        cont_R++;
+    }
+    else
+    {
+        if(cont_R >= 81) // 81 s√£o aproximadamente 2 segundos.. 401 s√£o aproximadamente 10 segundos
+        {
+            StopTimer0();
+            cont_R = 0;
+	    state = recuperacao;
+	    clear_Display();
+	    msg_restauracao();
+	    
+	    // REINICIALIZANDO TODO OS DADOS //
+ 	    flag_p = 0;
+	    flag_sensor = 0;
+	    flag_D_sensor = 0;
+	    flag_a_senha = 0;
+	    // desativando a interrup√£o externa //
+	    EICRA = (0<<ISC11) | (0<<ISC10);
+	    EIMSK = (0<<INT1);
+	    
+	    delay_ms(50);
+	    
+	    // Inicializando algumas coisas //
+	    init_int1();
+        }
+        else
+        {
+            StopTimer0();
+            cont_R = 0;
+            state = desativado;
+        }
+    }
 }
