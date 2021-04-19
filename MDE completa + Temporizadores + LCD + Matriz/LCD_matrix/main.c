@@ -106,9 +106,9 @@ void shiftOut() // ainda não testei mas fiz a parte de Setar e dar Clear no pino
 //    PINB &= ~(1<<pLoad_pin);// PINB7
 		for (uint8_t iter = 0; iter<8; iter++){
 			if( ((varEscritaSerial>>iter)& 0x1) ) // aqui deve vir a resposta a "qual o bit que está guardado na posição iter do byte a ser enviado?"
-			PORTC |= 0x01; // 0b00000001 -> ligar PORTC0. (Pinout_serial)
+			PORTD |= (1<<EXT_OUT); // 0b00000001 -> ligar PORTC0. (Pinout_serial)
 			else
-			PORTC &= 0xFE;// 0b11111110 -> desligar PORTC0. (Pinout_serial)
+			PORTD &= ~(1<<EXT_OUT);// 0b11111110 -> desligar PORTC0. (Pinout_serial)
 			
 			PORTB |= (1 << CLK_IN_OUT); // PINB3,CLK vai pra 1
 			PORTB &= ~(1 << CLK_IN_OUT); // PINB3,CLK vai pra 0
@@ -408,10 +408,10 @@ int main(void)
 	// matrix pinos //
 	DDRD = 0x00;
 	PORTD = 0xF0;*/
-	DDRB = 0b11111110;
+	//DDRB = 0b11111110;
 //	DDRB &= 0b11111110; // o pino PB0 ser? usado como leitura do serial,
 //	DDRB |= 0b11001110; // os pinos PB1 e PB2 ser? a sa?da de clock (CLK) e o controle paralelo/serial (P/S')
-	DDRD = 0xFF; // PORTD ? sa?da (s? pra teste)
+	//DDRD = 0xFF; // PORTD ? sa?da (s? pra teste)
 	/* Replace with your application code */
 	
 	// saída: PD2 (EXT_OUT), PB1 (CLK_IN_OUT), PB6 (PS_EXTIN), PB7 (PS_EXTOUT) || entrada: PB0 (EXT_IN)
