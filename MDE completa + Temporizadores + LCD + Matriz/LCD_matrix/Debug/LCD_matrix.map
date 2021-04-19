@@ -460,10 +460,10 @@ END GROUP
  .debug_abbrev  0x0000000000000000      0x5a2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
  .debug_abbrev  0x00000000000005a2      0x260 main.o
 
-.debug_line     0x0000000000000000     0x1df7
+.debug_line     0x0000000000000000     0x1df1
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000      0x137 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
- .debug_line    0x0000000000000137     0x1cc0 main.o
+ .debug_line    0x0000000000000137     0x1cba main.o
 
 .debug_frame    0x0000000000000000      0x53c
  *(.debug_frame)
@@ -659,372 +659,372 @@ LOAD data_init
                 0x00000000000028a2       0xea main.o
                 0x00000000000028a2                __vector_11
 
-.text.main      0x000000000000298c       0xb6
- .text.main     0x000000000000298c       0xb6 main.o
+.text.main      0x000000000000298c       0xb0
+ .text.main     0x000000000000298c       0xb0 main.o
                 0x000000000000298c                main
 
 .text.inicializa_display
-                0x0000000000002a42       0x9e
+                0x0000000000002a3c       0x9e
  .text.inicializa_display
-                0x0000000000002a42       0x9e main.o
-                0x0000000000002a42                inicializa_display
+                0x0000000000002a3c       0x9e main.o
+                0x0000000000002a3c                inicializa_display
 
 .text.hab_zonas
-                0x0000000000002ae0       0x90
+                0x0000000000002ada       0x90
  .text.hab_zonas
-                0x0000000000002ae0       0x90 main.o
-                0x0000000000002ae0                hab_zonas
+                0x0000000000002ada       0x90 main.o
+                0x0000000000002ada                hab_zonas
 
-.text.shiftIn   0x0000000000002b70       0x84
- .text.shiftIn  0x0000000000002b70       0x84 main.o
-                0x0000000000002b70                shiftIn
+.text.shiftIn   0x0000000000002b6a       0x84
+ .text.shiftIn  0x0000000000002b6a       0x84 main.o
+                0x0000000000002b6a                shiftIn
 
 .text.verify_senhaM
-                0x0000000000002bf4       0x74
+                0x0000000000002bee       0x74
  .text.verify_senhaM
-                0x0000000000002bf4       0x74 main.o
-                0x0000000000002bf4                verify_senhaM
+                0x0000000000002bee       0x74 main.o
+                0x0000000000002bee                verify_senhaM
 
 .text.msg_h_sensores
-                0x0000000000002c68       0x66
+                0x0000000000002c62       0x66
  .text.msg_h_sensores
-                0x0000000000002c68       0x66 main.o
-                0x0000000000002c68                msg_h_sensores
+                0x0000000000002c62       0x66 main.o
+                0x0000000000002c62                msg_h_sensores
 
 .text.msg_d_sensores
-                0x0000000000002cce       0x66
+                0x0000000000002cc8       0x66
  .text.msg_d_sensores
-                0x0000000000002cce       0x66 main.o
-                0x0000000000002cce                msg_d_sensores
+                0x0000000000002cc8       0x66 main.o
+                0x0000000000002cc8                msg_d_sensores
 
 .text.msg_h_zona
-                0x0000000000002d34       0x66
+                0x0000000000002d2e       0x66
  .text.msg_h_zona
-                0x0000000000002d34       0x66 main.o
-                0x0000000000002d34                msg_h_zona
+                0x0000000000002d2e       0x66 main.o
+                0x0000000000002d2e                msg_h_zona
 
 .text.msg_d_zona
-                0x0000000000002d9a       0x66
+                0x0000000000002d94       0x66
  .text.msg_d_zona
-                0x0000000000002d9a       0x66 main.o
-                0x0000000000002d9a                msg_d_zona
+                0x0000000000002d94       0x66 main.o
+                0x0000000000002d94                msg_d_zona
 
 .text.msg_h_ass
-                0x0000000000002e00       0x66
+                0x0000000000002dfa       0x66
  .text.msg_h_ass
-                0x0000000000002e00       0x66 main.o
-                0x0000000000002e00                msg_h_ass
+                0x0000000000002dfa       0x66 main.o
+                0x0000000000002dfa                msg_h_ass
 
 .text.msg_d_ass
-                0x0000000000002e66       0x66
+                0x0000000000002e60       0x66
  .text.msg_d_ass
-                0x0000000000002e66       0x66 main.o
-                0x0000000000002e66                msg_d_ass
+                0x0000000000002e60       0x66 main.o
+                0x0000000000002e60                msg_d_ass
 
 .text.msg_ajusteTout
-                0x0000000000002ecc       0x66
+                0x0000000000002ec6       0x66
  .text.msg_ajusteTout
-                0x0000000000002ecc       0x66 main.o
-                0x0000000000002ecc                msg_ajusteTout
+                0x0000000000002ec6       0x66 main.o
+                0x0000000000002ec6                msg_ajusteTout
 
 .text.msg_time_sirene
-                0x0000000000002f32       0x66
+                0x0000000000002f2c       0x66
  .text.msg_time_sirene
-                0x0000000000002f32       0x66 main.o
-                0x0000000000002f32                msg_time_sirene
+                0x0000000000002f2c       0x66 main.o
+                0x0000000000002f2c                msg_time_sirene
 
 .text.msg_temp_ativ
-                0x0000000000002f98       0x66
+                0x0000000000002f92       0x66
  .text.msg_temp_ativ
-                0x0000000000002f98       0x66 main.o
-                0x0000000000002f98                msg_temp_ativ
+                0x0000000000002f92       0x66 main.o
+                0x0000000000002f92                msg_temp_ativ
 
 .text.msg_panico
-                0x0000000000002ffe       0x62
+                0x0000000000002ff8       0x62
  .text.msg_panico
-                0x0000000000002ffe       0x62 main.o
-                0x0000000000002ffe                msg_panico
+                0x0000000000002ff8       0x62 main.o
+                0x0000000000002ff8                msg_panico
 
 .text.msg_desativado
-                0x0000000000003060       0x5c
+                0x000000000000305a       0x5c
  .text.msg_desativado
-                0x0000000000003060       0x5c main.o
-                0x0000000000003060                msg_desativado
+                0x000000000000305a       0x5c main.o
+                0x000000000000305a                msg_desativado
 
 .text.msg_ativado
-                0x00000000000030bc       0x5c
+                0x00000000000030b6       0x5c
  .text.msg_ativado
-                0x00000000000030bc       0x5c main.o
-                0x00000000000030bc                msg_ativado
+                0x00000000000030b6       0x5c main.o
+                0x00000000000030b6                msg_ativado
 
 .text.msg_programacao
-                0x0000000000003118       0x5c
+                0x0000000000003112       0x5c
  .text.msg_programacao
-                0x0000000000003118       0x5c main.o
-                0x0000000000003118                msg_programacao
+                0x0000000000003112       0x5c main.o
+                0x0000000000003112                msg_programacao
 
-.text.delay_ms  0x0000000000003174       0x54
+.text.delay_ms  0x000000000000316e       0x54
  .text.delay_ms
-                0x0000000000003174       0x54 main.o
-                0x0000000000003174                delay_ms
+                0x000000000000316e       0x54 main.o
+                0x000000000000316e                delay_ms
 
 .text.senha_arm
-                0x00000000000031c8       0x52
+                0x00000000000031c2       0x52
  .text.senha_arm
-                0x00000000000031c8       0x52 main.o
-                0x00000000000031c8                senha_arm
+                0x00000000000031c2       0x52 main.o
+                0x00000000000031c2                senha_arm
 
 .text.set_DDRAM_ADDR
-                0x000000000000321a       0x4e
+                0x0000000000003214       0x4e
  .text.set_DDRAM_ADDR
-                0x000000000000321a       0x4e main.o
-                0x000000000000321a                set_DDRAM_ADDR
+                0x0000000000003214       0x4e main.o
+                0x0000000000003214                set_DDRAM_ADDR
 
 .text.msg_inserir_senha
-                0x0000000000003268       0x4e
+                0x0000000000003262       0x4e
  .text.msg_inserir_senha
-                0x0000000000003268       0x4e main.o
-                0x0000000000003268                msg_inserir_senha
+                0x0000000000003262       0x4e main.o
+                0x0000000000003262                msg_inserir_senha
 
 .text.msg_altera_senha
-                0x00000000000032b6       0x4e
+                0x00000000000032b0       0x4e
  .text.msg_altera_senha
-                0x00000000000032b6       0x4e main.o
-                0x00000000000032b6                msg_altera_senha
+                0x00000000000032b0       0x4e main.o
+                0x00000000000032b0                msg_altera_senha
 
 .text.send_word_lcd
-                0x0000000000003304       0x4c
+                0x00000000000032fe       0x4c
  .text.send_word_lcd
-                0x0000000000003304       0x4c main.o
-                0x0000000000003304                send_word_lcd
+                0x00000000000032fe       0x4c main.o
+                0x00000000000032fe                send_word_lcd
 
-.text.shiftOut  0x0000000000003350       0x48
+.text.shiftOut  0x000000000000334a       0x48
  .text.shiftOut
-                0x0000000000003350       0x48 main.o
-                0x0000000000003350                shiftOut
+                0x000000000000334a       0x48 main.o
+                0x000000000000334a                shiftOut
 
-.text.delay_ns  0x0000000000003398       0x48
+.text.delay_ns  0x0000000000003392       0x48
  .text.delay_ns
-                0x0000000000003398       0x48 main.o
-                0x0000000000003398                delay_ns
+                0x0000000000003392       0x48 main.o
+                0x0000000000003392                delay_ns
 
 .text.set_timeA
-                0x00000000000033e0       0x48
+                0x00000000000033da       0x48
  .text.set_timeA
-                0x00000000000033e0       0x48 main.o
-                0x00000000000033e0                set_timeA
+                0x00000000000033da       0x48 main.o
+                0x00000000000033da                set_timeA
 
 .text.set_timeS
-                0x0000000000003428       0x48
+                0x0000000000003422       0x48
  .text.set_timeS
-                0x0000000000003428       0x48 main.o
-                0x0000000000003428                set_timeS
+                0x0000000000003422       0x48 main.o
+                0x0000000000003422                set_timeS
 
 .text.msg_restauracao
-                0x0000000000003470       0x44
+                0x000000000000346a       0x44
  .text.msg_restauracao
-                0x0000000000003470       0x44 main.o
-                0x0000000000003470                msg_restauracao
+                0x000000000000346a       0x44 main.o
+                0x000000000000346a                msg_restauracao
 
 .text.send_instruction_lcd
-                0x00000000000034b4       0x40
+                0x00000000000034ae       0x40
  .text.send_instruction_lcd
-                0x00000000000034b4       0x40 main.o
-                0x00000000000034b4                send_instruction_lcd
+                0x00000000000034ae       0x40 main.o
+                0x00000000000034ae                send_instruction_lcd
 
 .text.set_timeout
-                0x00000000000034f4       0x30
+                0x00000000000034ee       0x30
  .text.set_timeout
-                0x00000000000034f4       0x30 main.o
-                0x00000000000034f4                set_timeout
+                0x00000000000034ee       0x30 main.o
+                0x00000000000034ee                set_timeout
 
 .text.envia_frase
-                0x0000000000003524       0x2c
+                0x000000000000351e       0x2c
  .text.envia_frase
-                0x0000000000003524       0x2c main.o
-                0x0000000000003524                envia_frase
+                0x000000000000351e       0x2c main.o
+                0x000000000000351e                envia_frase
 
 .text.SetupTimer1
-                0x0000000000003550       0x22
+                0x000000000000354a       0x22
  .text.SetupTimer1
-                0x0000000000003550       0x22 main.o
-                0x0000000000003550                SetupTimer1
+                0x000000000000354a       0x22 main.o
+                0x000000000000354a                SetupTimer1
 
 .text.send_instruction_lcd_nibble
-                0x0000000000003572       0x20
+                0x000000000000356c       0x20
  .text.send_instruction_lcd_nibble
-                0x0000000000003572       0x20 main.o
-                0x0000000000003572                send_instruction_lcd_nibble
+                0x000000000000356c       0x20 main.o
+                0x000000000000356c                send_instruction_lcd_nibble
 
 .text.libgcc.mul
-                0x0000000000003592       0x1e
+                0x000000000000358c       0x1e
  .text.libgcc.mul
-                0x0000000000003592       0x1e c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_umulhisi3.o)
-                0x0000000000003592                __umulhisi3
+                0x000000000000358c       0x1e c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_umulhisi3.o)
+                0x000000000000358c                __umulhisi3
 
-.text.libgcc    0x00000000000035b0       0x1a
- .text.libgcc   0x00000000000035b0       0x1a c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_movmemx.o)
-                0x00000000000035b0                __movmemx_qi
-                0x00000000000035b2                __movmemx_hi
+.text.libgcc    0x00000000000035aa       0x1a
+ .text.libgcc   0x00000000000035aa       0x1a c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_movmemx.o)
+                0x00000000000035aa                __movmemx_qi
+                0x00000000000035ac                __movmemx_hi
 
 .text.ZerarTemps
-                0x00000000000035ca       0x16
+                0x00000000000035c4       0x16
  .text.ZerarTemps
-                0x00000000000035ca       0x16 main.o
-                0x00000000000035ca                ZerarTemps
+                0x00000000000035c4       0x16 main.o
+                0x00000000000035c4                ZerarTemps
 
 .text.libgcc.mul
-                0x00000000000035e0       0x16
+                0x00000000000035da       0x16
  .text.libgcc.mul
-                0x00000000000035e0       0x16 c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_muluhisi3.o)
-                0x00000000000035e0                __muluhisi3
+                0x00000000000035da       0x16 c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_muluhisi3.o)
+                0x00000000000035da                __muluhisi3
 
-.text.ClearBit  0x00000000000035f6       0x14
+.text.ClearBit  0x00000000000035f0       0x14
  .text.ClearBit
-                0x00000000000035f6       0x14 main.o
-                0x00000000000035f6                ClearBit
+                0x00000000000035f0       0x14 main.o
+                0x00000000000035f0                ClearBit
 
 .text.clear_Display
-                0x000000000000360a       0x14
+                0x0000000000003604       0x14
  .text.clear_Display
-                0x000000000000360a       0x14 main.o
-                0x000000000000360a                clear_Display
+                0x0000000000003604       0x14 main.o
+                0x0000000000003604                clear_Display
 
 .text.insert_senha
-                0x000000000000361e       0x14
+                0x0000000000003618       0x14
  .text.insert_senha
-                0x000000000000361e       0x14 main.o
-                0x000000000000361e                insert_senha
+                0x0000000000003618       0x14 main.o
+                0x0000000000003618                insert_senha
 
 .text.StopTimer1
-                0x0000000000003632       0x14
+                0x000000000000362c       0x14
  .text.StopTimer1
-                0x0000000000003632       0x14 main.o
-                0x0000000000003632                StopTimer1
+                0x000000000000362c       0x14 main.o
+                0x000000000000362c                StopTimer1
 
-.text.SetBit    0x0000000000003646       0x12
- .text.SetBit   0x0000000000003646       0x12 main.o
-                0x0000000000003646                SetBit
+.text.SetBit    0x0000000000003640       0x12
+ .text.SetBit   0x0000000000003640       0x12 main.o
+                0x0000000000003640                SetBit
 
 .text.SetupTimer0
-                0x0000000000003658       0x12
+                0x0000000000003652       0x12
  .text.SetupTimer0
-                0x0000000000003658       0x12 main.o
-                0x0000000000003658                SetupTimer0
+                0x0000000000003652       0x12 main.o
+                0x0000000000003652                SetupTimer0
 
 .text.init_int1
-                0x000000000000366a        0xc
+                0x0000000000003664        0xc
  .text.init_int1
-                0x000000000000366a        0xc main.o
-                0x000000000000366a                init_int1
+                0x0000000000003664        0xc main.o
+                0x0000000000003664                init_int1
 
 .text.StartTimer1
-                0x0000000000003676        0xc
+                0x0000000000003670        0xc
  .text.StartTimer1
-                0x0000000000003676        0xc main.o
-                0x0000000000003676                StartTimer1
+                0x0000000000003670        0xc main.o
+                0x0000000000003670                StartTimer1
 
-.text.libgcc    0x0000000000003682        0xc
- .text.libgcc   0x0000000000003682        0xc c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_tablejump2.o)
-                0x0000000000003682                __tablejump2__
+.text.libgcc    0x000000000000367c        0xc
+ .text.libgcc   0x000000000000367c        0xc c:/program files/microchip/xc8/v2.31/avr/bin/../lib/gcc/avr/5.4.0/avr5/memx-const\libgcc.a(_tablejump2.o)
+                0x000000000000367c                __tablejump2__
 
 .text.StartSirene
-                0x000000000000368e        0x8
+                0x0000000000003688        0x8
  .text.StartSirene
-                0x000000000000368e        0x8 main.o
-                0x000000000000368e                StartSirene
+                0x0000000000003688        0x8 main.o
+                0x0000000000003688                StartSirene
 
 .text.StopSirene
-                0x0000000000003696        0x6
+                0x0000000000003690        0x6
  .text.StopSirene
-                0x0000000000003696        0x6 main.o
-                0x0000000000003696                StopSirene
+                0x0000000000003690        0x6 main.o
+                0x0000000000003690                StopSirene
 
-.text           0x000000000000369c        0x4
- .text          0x000000000000369c        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
-                0x000000000000369c                __vector_22
-                0x000000000000369c                __vector_1
-                0x000000000000369c                __vector_24
-                0x000000000000369c                __vector_12
-                0x000000000000369c                __bad_interrupt
-                0x000000000000369c                __vector_6
-                0x000000000000369c                __vector_3
-                0x000000000000369c                __vector_23
-                0x000000000000369c                __vector_25
-                0x000000000000369c                __vector_13
-                0x000000000000369c                __vector_17
-                0x000000000000369c                __vector_19
-                0x000000000000369c                __vector_7
-                0x000000000000369c                __vector_5
-                0x000000000000369c                __vector_4
-                0x000000000000369c                __vector_9
-                0x000000000000369c                __vector_21
-                0x000000000000369c                __vector_15
-                0x000000000000369c                __vector_8
-                0x000000000000369c                __vector_14
-                0x000000000000369c                __vector_10
-                0x000000000000369c                __vector_16
-                0x000000000000369c                __vector_18
-                0x000000000000369c                __vector_20
+.text           0x0000000000003696        0x4
+ .text          0x0000000000003696        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/xc8/avr/lib/avr5/memx-const/crtatmega328p.o
+                0x0000000000003696                __vector_22
+                0x0000000000003696                __vector_1
+                0x0000000000003696                __vector_24
+                0x0000000000003696                __vector_12
+                0x0000000000003696                __bad_interrupt
+                0x0000000000003696                __vector_6
+                0x0000000000003696                __vector_3
+                0x0000000000003696                __vector_23
+                0x0000000000003696                __vector_25
+                0x0000000000003696                __vector_13
+                0x0000000000003696                __vector_17
+                0x0000000000003696                __vector_19
+                0x0000000000003696                __vector_7
+                0x0000000000003696                __vector_5
+                0x0000000000003696                __vector_4
+                0x0000000000003696                __vector_9
+                0x0000000000003696                __vector_21
+                0x0000000000003696                __vector_15
+                0x0000000000003696                __vector_8
+                0x0000000000003696                __vector_14
+                0x0000000000003696                __vector_10
+                0x0000000000003696                __vector_16
+                0x0000000000003696                __vector_18
+                0x0000000000003696                __vector_20
 
-.data.zona3     0x0000000000800132       0x14 load address 0x00000000000036a0
+.data.zona3     0x0000000000800132       0x14 load address 0x000000000000369a
  .data.zona3    0x0000000000800132       0x14 main.o
                 0x0000000000800132                zona3
 
-.data.zona2     0x0000000000800146       0x14 load address 0x00000000000036b4
+.data.zona2     0x0000000000800146       0x14 load address 0x00000000000036ae
  .data.zona2    0x0000000000800146       0x14 main.o
                 0x0000000000800146                zona2
 
-.data.zona1     0x000000000080015a       0x14 load address 0x00000000000036c8
+.data.zona1     0x000000000080015a       0x14 load address 0x00000000000036c2
  .data.zona1    0x000000000080015a       0x14 main.o
                 0x000000000080015a                zona1
 
-.data.sensor7   0x000000000080016e        0x6 load address 0x00000000000036dc
+.data.sensor7   0x000000000080016e        0x6 load address 0x00000000000036d6
  .data.sensor7  0x000000000080016e        0x6 main.o
                 0x000000000080016e                sensor7
 
-.data.sensor6   0x0000000000800174        0x6 load address 0x00000000000036e2
+.data.sensor6   0x0000000000800174        0x6 load address 0x00000000000036dc
  .data.sensor6  0x0000000000800174        0x6 main.o
                 0x0000000000800174                sensor6
 
-.data.sensor5   0x000000000080017a        0x6 load address 0x00000000000036e8
+.data.sensor5   0x000000000080017a        0x6 load address 0x00000000000036e2
  .data.sensor5  0x000000000080017a        0x6 main.o
                 0x000000000080017a                sensor5
 
-.data.sensor4   0x0000000000800180        0x6 load address 0x00000000000036ee
+.data.sensor4   0x0000000000800180        0x6 load address 0x00000000000036e8
  .data.sensor4  0x0000000000800180        0x6 main.o
                 0x0000000000800180                sensor4
 
-.data.sensor3   0x0000000000800186        0x6 load address 0x00000000000036f4
+.data.sensor3   0x0000000000800186        0x6 load address 0x00000000000036ee
  .data.sensor3  0x0000000000800186        0x6 main.o
                 0x0000000000800186                sensor3
 
-.data.sensor2   0x000000000080018c        0x6 load address 0x00000000000036fa
+.data.sensor2   0x000000000080018c        0x6 load address 0x00000000000036f4
  .data.sensor2  0x000000000080018c        0x6 main.o
                 0x000000000080018c                sensor2
 
-.data.sensor1   0x0000000000800192        0x6 load address 0x0000000000003700
+.data.sensor1   0x0000000000800192        0x6 load address 0x00000000000036fa
  .data.sensor1  0x0000000000800192        0x6 main.o
                 0x0000000000800192                sensor1
 
-.data.senha3    0x000000000080019e        0x5 load address 0x0000000000003706
+.data.senha3    0x000000000080019e        0x5 load address 0x0000000000003700
  .data.senha3   0x000000000080019e        0x5 main.o
                 0x000000000080019e                senha3
 
-.data.senha2    0x00000000008001a3        0x5 load address 0x000000000000370b
+.data.senha2    0x00000000008001a3        0x5 load address 0x0000000000003705
  .data.senha2   0x00000000008001a3        0x5 main.o
                 0x00000000008001a3                senha2
 
-.data.senha1    0x00000000008001a8        0x5 load address 0x0000000000003710
+.data.senha1    0x00000000008001a8        0x5 load address 0x000000000000370a
  .data.senha1   0x00000000008001a8        0x5 main.o
                 0x00000000008001a8                senha1
 
-.data.mestre    0x00000000008001ad        0x5 load address 0x0000000000003715
+.data.mestre    0x00000000008001ad        0x5 load address 0x000000000000370f
  .data.mestre   0x00000000008001ad        0x5 main.o
                 0x00000000008001ad                mestre
 
 .data.varEscritaSerial
-                0x00000000008001da        0x1 load address 0x000000000000371a
+                0x00000000008001da        0x1 load address 0x0000000000003714
  .data.varEscritaSerial
                 0x00000000008001da        0x1 main.o
                 0x00000000008001da                varEscritaSerial

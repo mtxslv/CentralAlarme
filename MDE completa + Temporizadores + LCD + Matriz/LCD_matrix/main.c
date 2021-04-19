@@ -34,12 +34,12 @@
 #define RS_LCD     PC4
 #define EN_LCD     PC5
 
-#define clock_shftin PINB2
-#define P_Shftin PINB1
+//#define clock_shftin PINB2
+//#define P_Shftin PINB1
 // talvez possa ser o mesmo clock do extensor entrada
 
-#define Pinout_serial PINC0 // saída de dados serial
-#define pLoad_pin PINB7 // controle carga paralela
+//#define Pinout_serial PINC0 // saída de dados serial
+//#define pLoad_pin PINB7 // controle carga paralela
 
 // TUDO DE SERIAL SHIFT IN E OUT É AQUI PEGUIÇA DE ORGANIZAR JÁ //
 
@@ -59,17 +59,17 @@ uint8_t ClearBit(uint8_t valor, uint8_t posicao){
 
 void OutSerial()
 {
-    PINC |= (1 << Pinout_serial);
+    PINC |= (1 << EXT_OUT);
 }
 
 void shiftIn()
 {
 
 	// Carga paralela do registrador
-	PORTB |= (1 << P_Shftin); // P/S' vai pra 1
-	PORTB |= (1 << clock_shftin); // CLK  vai pra 1
-	PORTB &= ~(1 << clock_shftin); // CLK  vai pra 0
-	PORTB &= ~(1 << P_Shftin); // P/S' vai pra 0
+	PORTB |= (1 << PS_EXTIN); // P/S' vai pra 1
+	PORTB |= (1 << CLK_IN_OUT); // CLK  vai pra 1
+	PORTB &= ~(1 << CLK_IN_OUT); // CLK  vai pra 0
+	PORTB &= ~(1 << PS_EXTIN); // P/S' vai pra 0
 		
 	for (uint8_t iter = 0; iter<8 ; iter++){
 
@@ -82,8 +82,8 @@ void shiftIn()
 	       if(varLeituraSerial & (1<<iter)) 
 				varLeituraSerial = ClearBit(varLeituraSerial,iter); // QUANDO FOR 1, IRÁ SETAR O VALOR NO REGISTRADOR
        }
-	   	PORTB |= (1 << clock_shftin); // CLK vai pra 1
-		PORTB &= ~(1 << clock_shftin); // CLK vai pra 0
+	   	PORTB |= (1 << CLK_IN_OUT); // CLK vai pra 1
+		PORTB &= ~(1 << CLK_IN_OUT); // CLK vai pra 0
 	}
 }
 
@@ -110,11 +110,11 @@ void shiftOut() // ainda não testei mas fiz a parte de Setar e dar Clear no pino
 			else
 			PORTC &= 0xFE;// 0b11111110 -> desligar PORTC0. (Pinout_serial)
 			
-			PORTB |= (1 << clock_shftin); // PINB3,CLK vai pra 1
-			PORTB &= ~(1 << clock_shftin); // PINB3,CLK vai pra 0
+			PORTB |= (1 << CLK_IN_OUT); // PINB3,CLK vai pra 1
+			PORTB &= ~(1 << CLK_IN_OUT); // PINB3,CLK vai pra 0
 		}
-		PINB &= ~(1<<pLoad_pin);
-		PINB |= (1<<pLoad_pin); // PINB7
+		PINB &= ~(1<<PS_EXTOUT);
+		PINB |= (1<<PS_EXTOUT); // PINB7
 /*	    
    for (uint8_t iter = 0; iter<8 ; iter++){
        if(PINB & (1 << Pinout_serial))
@@ -413,10 +413,10 @@ int main(void)
 	DDRB |= 0b10001110; // os pinos PB1 e PB2 ser? a sa?da de clock (CLK) e o controle paralelo/serial (P/S')
 	DDRD = 0xFF; // PORTD ? sa?da (s? pra teste)
 	/* Replace with your application code */
-	DDRC |= 0b00000001; // saída dados serial
+	
 	
 	//DISPLAY PINOS
-	DDRC = 0b01111110;
+	DDRC = 0x3F; //0b0011 1111
 	
 	//definções finais - depois dos setups menos o SPI
 	DDRB = 0xFE;
