@@ -436,8 +436,8 @@ int main(void)
     while(1)
     {	
 		// SENSORES //
-		shiftIn();
-		varEscritaSerial = varLeituraSerial;
+		
+		//varEscritaSerial = varLeituraSerial;
 		shiftOut();
 		// SWITCH CASE PARA A SELEÇÃO DO MODO //
         switch(state){
@@ -450,12 +450,14 @@ int main(void)
 			t_ativacao = 5;
 			// vai direto pro desativado //
 			state = desativado;
-			break;
-			case desativado:
 			msg_desativado();
 			break;
+			case desativado:
+			//msg_desativado();
+			break;
 			case ativado:
-			msg_ativado();
+			//msg_ativado();
+			shiftIn();
 			break;
 			case programacao:
 			msg_programacao();
@@ -1204,6 +1206,7 @@ ISR(INT1_vect){
 		}else if(flag_p == 1){
 			StopSirene();
 			state = desativado;
+			msg_desativado();
 		}		
 	}
 	else if(valor_pinod == 0x00){
@@ -1211,6 +1214,7 @@ ISR(INT1_vect){
 		if((state == inserir_senhaN) & (count_senha == 4)){
 			state = desativado;
 			clear_Display();
+			msg_desativado();
 			count_senha = 0;
 		}
 		if((state == inserir_senhaA) & (count_senha == 4)){
@@ -1226,11 +1230,13 @@ ISR(INT1_vect){
 		if((state == HabSensor) & (flag_sensor == 1)){
 			//
 			state = desativado;
+			msg_desativado();
 			flag_sensor = 0;
 		}
 		if((state == HabZona) & (flag_sensor == 1)){
 			//
 			state = desativado;
+			msg_desativado();
 			flag_sensor = 0;
 		}
 		// ass de zona e sensor //
@@ -1239,21 +1245,27 @@ ISR(INT1_vect){
 			assSensorZona(idsensor, idzona);
 			flag_z = 0;
 			flag_z1 = 0;
+			msg_desativado();
 		}
 		if((state == AjusteTout) & ((cont_t >= 2) & (flag_timeout == 1))){
 			state = desativado;
+			//msg_desativado();
 			set_timeout();
 			cont_t = 0;
+			msg_desativado();
 		}
 		if((state == AjusteTSirene) & (cont_s >= 3)){
 			state = desativado;
+			//msg_desativado();
 			set_timeS();
 			cont_s = 0;
+			msg_desativado();
 		}
 		if((state == AjusteTAtivacao) & (cont_aa >= 3)){
 			state = desativado;
 			set_timeA();
 			cont_aa = 0;
+			msg_desativado();
 		}
 	}
 }
@@ -1700,6 +1712,7 @@ void verify_senhaM(){
 		
 		state = desativado;
 		clear_Display();
+		msg_desativado();
 	}
 	
 }
@@ -1791,6 +1804,7 @@ void verify_senhaA(){
 		
 		state = desativado;
 		clear_Display();
+		msg_desativado();
 		return;
 	}
 }
@@ -1812,6 +1826,7 @@ void verify_senhaD(){
 		
 		state = desativado;
 		clear_Display();
+		msg_desativado();
 		return;
 		
 	}
@@ -1832,6 +1847,7 @@ void verify_senhaD(){
 		
 		state = desativado;
 		clear_Display();
+		msg_desativado();
 		return;
 		
 	}
@@ -1852,6 +1868,7 @@ void verify_senhaD(){
 		
 		state = desativado;
 		clear_Display();
+		msg_desativado();
 		return;
 		
 	}
@@ -1872,6 +1889,7 @@ void verify_senhaD(){
 		
 		state = desativado;
 		clear_Display();
+		msg_desativado();
 		return;
 		
 		}else{
@@ -2222,6 +2240,7 @@ ISR(TIMER1_COMPA_vect)
 		{
 			state = desativado;
 			cont_timeout = 0;
+			msg_desativado();
 			StopTimer1();
 		}
 		else
@@ -2251,8 +2270,8 @@ ISR(TIMER1_COMPA_vect)
 		if(cont_ativacao == t_ativacao)
 		{
 			state = ativado;
+			msg_ativado();
 			cont_ativacao = 0;
-			
 			StopTimer1();
 		}
 		else
