@@ -13,20 +13,20 @@
 #define TAXA 9600
 #define BUZZER     PD0
 #define OUT_UART   PD1
-#define EXT_OUT    PD2
+#define EXT_OUT    PORTD2   
 #define INT_MATRIZ PD3
 #define MATRIZ1    PD7
 #define MATRIZ2    PD6
 #define MATRIZ3    PD5
 #define MATRIZ4    PD4
-#define EXT_IN     PB0
-#define CLK_IN_OUT PB1
+#define EXT_IN     PORTB0
+#define CLK_IN_OUT PORTB1
 #define CS         PB2
 #define MOSI       PB3
 #define MISO       PB4
 #define SCLK       PB5
-#define PS_EXTIN   PB6
-#define PS_EXTOUT  PB7
+#define PS_EXTIN   PORTB6
+#define PS_EXTOUT  PORTB7
 #define D4         PC0
 #define D5         PC1
 #define D6         PC2
@@ -408,12 +408,13 @@ int main(void)
 	// matrix pinos //
 	DDRD = 0x00;
 	PORTD = 0xF0;*/
-	
-	DDRB &= 0b11111110; // o pino PB0 ser? usado como leitura do serial,
-	DDRB |= 0b10001110; // os pinos PB1 e PB2 ser? a sa?da de clock (CLK) e o controle paralelo/serial (P/S')
+	DDRB = 0b11111110;
+//	DDRB &= 0b11111110; // o pino PB0 ser? usado como leitura do serial,
+//	DDRB |= 0b11001110; // os pinos PB1 e PB2 ser? a sa?da de clock (CLK) e o controle paralelo/serial (P/S')
 	DDRD = 0xFF; // PORTD ? sa?da (s? pra teste)
 	/* Replace with your application code */
 	
+	// saída: PD2 (EXT_OUT), PB1 (CLK_IN_OUT), PB6 (PS_EXTIN), PB7 (PS_EXTOUT) || entrada: PB0 (EXT_IN)
 	
 	//DISPLAY PINOS
 	DDRC = 0x3F; //0b0011 1111
